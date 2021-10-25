@@ -1,8 +1,8 @@
 import express from "express";
 import { connectToDB } from "./service/dbService";
+require("dotenv").config();
 
 const app = express();
-require("dotenv").config();
 
 //* Environment dependant stuff
 const URI: string = process.env.URI ?? "";
@@ -22,7 +22,7 @@ connectToDB(URI, DATABASE, COLLECTION)
     startServer();
   })
   .catch((error: Error) => {
-    console.error("Database connection failed", error);
+    console.error(error, "Database connection failed");
     process.exit();
   });
 
