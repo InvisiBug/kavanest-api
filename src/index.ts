@@ -1,25 +1,30 @@
 import express from "express";
-// import mongoose from "mongoose";
-const app = express();
-
-//Import the mongoose module
 import mongoose from "mongoose";
 
-//Set up default mongoose connection
-var dbUrl = "mongodb://localhost";
-mongoose.connect(dbUrl);
+import { connectToDB } from "./service/dbService";
+const app = express();
+require("dotenv").config();
 
-//Get the default connection
-var db = mongoose.connection;
+//* Environment dependant stuff
+const URI: string = process.env.URI ?? "";
+const DATABASE: string = process.env.DATABASE ?? "";
+const COLLECTION = process.env.COLLECTION ?? "";
 
-//Bind connection to error event (to get notification of connection errors)
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
+const startServer = async () => {
+  const port = 8081;
 
-app.set("port", process.env.PORT || 4000);
-app.listen(app.get("port"), () => {
-  console.log("Node app is running at localhost:" + app.get("port"));
-});
+  app.listen({ port: port }, () => {
+    console.log("Node app is running at localhost:" + port);
+  });
+};
+
+connectToDB(URI, DATABASE, COLLECTION)
+  .then(() => {
+    startServer();
+  })
+  .catch((error: Error) => {
+    console.error("Database connection failed", error);
+    process.exit();
+  });
 
 console.log("🚀 App Running");
-
-// setInterval(() => {}, 10);
