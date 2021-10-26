@@ -2,7 +2,7 @@ import mocks from "../mocks";
 
 const resolvers = {
   Query: {
-    books: () => mocks,
+    people: () => mocks,
   },
 };
 

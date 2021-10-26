@@ -1,9 +1,9 @@
-type Book {
-  title: String
-  author: String
-  other: String
+type Person {
+  name: String
+  age: Int
+  sex: String
 }
 
 type Query {
-  books: [Book]
+  people: [Person]
 }

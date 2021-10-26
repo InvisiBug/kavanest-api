@@ -1,14 +1,8 @@
 const mocks = [
-  {
-    title: "Matts Book",
-    author: "Kate Chopin",
-    other: "nope",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-    other: "nope",
-  },
+  { name: "Matt", sex: "Male", age: 30 },
+  { name: "Eliza", sex: "Female", age: 25 },
+  { name: "Liam", sex: "Male", age: 27 },
+  { name: "Hannah", sex: "Female", age: 25 },
 ];
 
 export default mocks;
