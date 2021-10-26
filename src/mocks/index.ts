@@ -1,8 +1,2 @@
-const mocks = [
-  { name: "Matt", sex: "Male", age: 30 },
-  { name: "Eliza", sex: "Female", age: 25 },
-  { name: "Liam", sex: "Male", age: 27 },
-  { name: "Hannah", sex: "Female", age: 25 },
-];
-
-export default mocks;
+export { default as people } from "./people";
+export { default as books } from "./books";

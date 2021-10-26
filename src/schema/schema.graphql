@@ -4,6 +4,12 @@ type Person {
   sex: String
 }
 
+type Books {
+  title: String
+  author: String
+}
+
 type Query {
   people: [Person]
+  books: [Books]
 }

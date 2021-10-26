@@ -1,8 +1,9 @@
-import mocks from "../mocks";
+import { people, books } from "../mocks";
 
 const resolvers = {
   Query: {
-    people: () => mocks,
+    people: () => people,
+    books: () => books,
   },
 };
 
