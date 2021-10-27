@@ -1,29 +1,15 @@
-import express from "express";
-import { connectToDB } from "./service/dbService";
+import { makeExecutableSchema } from "@graphql-tools/schema";
+import { ApolloServer } from "apollo-server";
+import { readFileSync } from "fs";
+import resolvers from "./resolvers";
+import path from "path";
 
-const app = express();
-require("dotenv").config();
+//* GraphQL server config
+const typeDefs = readFileSync(path.resolve(__dirname, "./schema/schema.graphql"), "utf-8");
+const schema = makeExecutableSchema({ resolvers, typeDefs });
 
-//* Environment dependant stuff
-const URI: string = process.env.URI ?? "";
-const DATABASE: string = process.env.DATABASE ?? "";
-const COLLECTION = process.env.COLLECTION ?? "";
+const server = new ApolloServer({ schema, resolvers });
 
-const startServer = async () => {
-  const port: number = 8081;
-
-  app.listen({ port: port }, () => {
-    console.log("Node app is running at localhost:" + port);
-  });
-};
-
-connectToDB(URI, DATABASE, COLLECTION)
-  .then(() => {
-    startServer();
-  })
-  .catch((error: Error) => {
-    console.error("Database connection failed", error);
-    process.exit();
-  });
-
-console.log("🚀 App Running");
+server.listen().then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`);
+});
