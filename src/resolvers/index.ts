@@ -12,11 +12,11 @@ const resolvers = {
     },
   },
   Mutation: {
-    createFriend: ({ input }) => {
-      // let x = input;
-      // console.log("here");
+    createFriend: (_: any, { input }) => {
       let id = require("crypto").randomBytes(10).toString("hex");
       friendDatabase[id] = input;
+
+      console.log(friendDatabase[id]);
       return new FriendClass(id, input);
     },
   },

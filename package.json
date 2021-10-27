@@ -10,6 +10,7 @@
   "author": "InvisiBug <matthewjkavanagh@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "apollo-log": "^1.1.0",
     "apollo-server": "^3.4.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
