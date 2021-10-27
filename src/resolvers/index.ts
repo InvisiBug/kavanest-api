@@ -16,8 +16,9 @@ const resolvers = {
       let id = require("crypto").randomBytes(10).toString("hex");
       friendDatabase[id] = input;
 
-      console.log(friendDatabase[id]);
-      return new FriendClass(id, input);
+      const newest = new FriendClass(id, input);
+      console.log(newest);
+      return newest;
     },
   },
 };

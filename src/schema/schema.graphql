@@ -1,3 +1,5 @@
+##########################################
+# Queries & Mutations
 type Query {
   friend: Friend
   getFriend(id: ID): Friend
@@ -6,6 +8,7 @@ type Query {
 type Mutation {
   createFriend(input: FriendInput): Friend
 }
+
 ##########################################
 # Inputs
 input FriendInput {

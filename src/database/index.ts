@@ -1,15 +1,17 @@
 export default class FriendClass {
-  id: Number;
+  id: String;
   firstName: String;
   lastName: String;
   gender: String;
   email: String;
+  age: Number;
 
-  constructor(id: Number, { firstName, lastName, gender, email }) {
+  constructor(id: String, { firstName, lastName, gender, email, age }) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.gender = gender;
     this.email = email;
+    this.age = age;
   }
 }

@@ -2,7 +2,7 @@ const friend = {
   id: 28739218,
   firstName: "John",
   lastName: "Jones",
-  gender: "Male",
+  gender: "MALE",
   email: "me@nope.com",
 };
 
