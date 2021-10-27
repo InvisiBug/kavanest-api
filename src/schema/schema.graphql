@@ -1,3 +1,9 @@
+# All queries that the app may make need to go here
+type Query {
+  people: [Person]
+  books: [Books]
+}
+
 type Person {
   name: String
   age: Int
@@ -7,9 +13,4 @@ type Person {
 type Books {
   title: String
   author: String
-}
-
-type Query {
-  people: [Person]
-  books: [Books]
 }
