@@ -1,17 +1,44 @@
-type Book {
-  title: String
-  author: String
-  other: String
+type Query {
+  friend: Friend
+  getFriend(id: ID): Friend
 }
 
+type Mutation {
+  createFriend(input: FriendInput): Friend
+}
+##########################################
+# Inputs
+input FriendInput {
+  id: ID
+  firstName: String
+  lastName: String
+  gender: Gender
+  email: String
+  age: Int
+}
+
+##########################################
+# Data
 type Friend {
   id: ID
   firstName: String
   lastName: String
-  gender: String
+  gender: Gender
+  email: String
+  age: Int
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+type Email {
   email: String
 }
 
-type Query {
-  friend: Friend
+type Books {
+  title: String
+  author: String
 }
