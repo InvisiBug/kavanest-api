@@ -4,6 +4,14 @@ type Book {
   other: String
 }
 
+type Friend {
+  id: ID
+  firstName: String
+  lastName: String
+  gender: String
+  email: String
+}
+
 type Query {
-  books: [Book]
+  friend: Friend
 }

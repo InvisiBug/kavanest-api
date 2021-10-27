@@ -1,8 +1,10 @@
-import mocks from "../mocks";
+import { friend } from "../mocks";
 
 const resolvers = {
   Query: {
-    books: () => mocks,
+    friend: () => {
+      return friend;
+    },
   },
 };
 
