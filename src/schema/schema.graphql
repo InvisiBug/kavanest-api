@@ -7,6 +7,8 @@ type Query {
 
 type Mutation {
   createFriend(input: FriendInput): Friend
+  updateFriend(input: FriendInput): Friend
+  deleteFriend(id: ID!): String
 }
 
 ##########################################
@@ -18,6 +20,7 @@ input FriendInput {
   gender: Gender
   email: String
   age: Int
+  language: String
   contacts: [ContactInput]
 }
 
@@ -35,7 +38,15 @@ type Friend {
   gender: Gender
   email: String
   age: Int
+  Language: String
   contacts: [Contact]
+}
+
+type Alien {
+  id: ID
+  firstName: String
+  lastName: String
+  planet: String
 }
 
 type Contact {

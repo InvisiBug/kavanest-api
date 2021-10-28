@@ -17,3 +17,5 @@ export default class FriendClass {
     this.contacts = contacts;
   }
 }
+export { default as Friends } from "./friends";
+export { default as Aliens } from "./aliens";
