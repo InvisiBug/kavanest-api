@@ -1,5 +1,5 @@
 ##########################################
-# Queries & Mutations
+#* Queries & Mutations
 type Query {
   friend: Friend
   getFriend(id: ID): Friend
@@ -10,7 +10,7 @@ type Mutation {
 }
 
 ##########################################
-# Inputs
+#* Inputs
 input FriendInput {
   id: ID
   firstName: String
@@ -18,10 +18,16 @@ input FriendInput {
   gender: Gender
   email: String
   age: Int
+  contacts: [ContactInput]
+}
+
+input ContactInput {
+  firstName: String
+  lastName: String
 }
 
 ##########################################
-# Data
+#* Data
 type Friend {
   id: ID
   firstName: String
@@ -29,6 +35,12 @@ type Friend {
   gender: Gender
   email: String
   age: Int
+  contacts: [Contact]
+}
+
+type Contact {
+  firstName: String
+  lastName: String
 }
 
 enum Gender {
