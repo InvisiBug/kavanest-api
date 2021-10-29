@@ -7,6 +7,7 @@ const FriendSchema = new mongoose.Schema({
   age: { type: Number },
   email: { type: String },
   contacts: { type: Array },
+  language: { type: String },
 });
 
 export default FriendSchema;

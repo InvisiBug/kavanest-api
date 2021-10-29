@@ -3,7 +3,8 @@
 type Query {
   friend: Friend
   getOneFriend(id: ID): Friend
-  getAliens: [Alien]
+  getAllAliens: [Alien]
+  getRadiator: [Radiator]
 }
 
 type Mutation {
@@ -41,6 +42,12 @@ type Friend {
   age: Int
   Language: String
   contacts: [Contact]
+}
+type Radiator {
+  id: ID
+  room: String
+  inlet: Float
+  outlet: Float
 }
 
 type Alien {
