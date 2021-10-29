@@ -1,5 +1,5 @@
 import { friend, books } from "../mocks";
-import { Friends } from "../database";
+import { Friends, Aliens } from "../database";
 import FriendClass from "../database";
 let friendDatabase = {};
 
@@ -8,8 +8,13 @@ const resolvers = {
     friend: () => {
       return friend;
     },
-    getFriend: ({ id }) => {
-      return new FriendClass(id, friendDatabase[id]);
+    getOneFriend: ({ id }) => {
+      // return new FriendClass(id, friendDatabase[id]);
+      return Friends.findById({ _id: id });
+    },
+    getAliens: async () => {
+      // return Aliens.findOne({ firstName: name });
+      return await Aliens.find();
     },
   },
   Mutation: {
