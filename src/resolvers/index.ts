@@ -1,6 +1,5 @@
 import { friend, books } from "../mocks";
-import { FriendStore, AlienStore, RadiatorStore } from "../database";
-let friendDatabase = {};
+import { FriendStore, AlienStore, RadiatorStore, FloodLightStore } from "../database";
 
 const resolvers = {
   Query: {
@@ -14,13 +13,11 @@ const resolvers = {
       return await AlienStore.find();
     },
     getRadiator: async () => {
-      const save = await RadiatorStore.find();
-      console.log(save);
-      return save;
+      return await RadiatorStore.find();
     },
-    // getFloodlight: async () =>{
-    //   return await
-    // }
+    getFloodlight: async () => {
+      return await FloodLightStore.find();
+    },
   },
   Mutation: {
     createFriend: async (_: any, { input }) => {

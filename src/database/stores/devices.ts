@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { Floodlight, Radiator } from "../schemas";
 
 const devicesConnection = mongoose.createConnection("mongodb://localhost:27017/devices");
-export const FloodLightStore = devicesConnection.model<FloodLight>("aliens", Floodlight);
+export const FloodLightStore = devicesConnection.model("floodlight", Floodlight);
 export const RadiatorStore = devicesConnection.model("radiator", Radiator);
 
 interface FloodLight {

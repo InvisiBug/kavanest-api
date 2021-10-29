@@ -5,6 +5,7 @@ type Query {
   getOneFriend(id: ID): Friend
   getAllAliens: [Alien]
   getRadiator: [Radiator]
+  getFloodlight: [Floodlight]
 }
 
 type Mutation {
@@ -33,6 +34,16 @@ input ContactInput {
 
 ##########################################
 #* Data
+type Radiator {
+  room: String
+  inlet: Float
+  outlet: Float
+}
+
+type Floodlight {
+  state: Boolean
+}
+
 type Friend {
   id: ID
   firstName: String
@@ -42,12 +53,6 @@ type Friend {
   age: Int
   Language: String
   contacts: [Contact]
-}
-type Radiator {
-  id: ID
-  room: String
-  inlet: Float
-  outlet: Float
 }
 
 type Alien {
