@@ -8,7 +8,7 @@ const resolvers = {
     friend: () => {
       return friend;
     },
-    getOneFriend: ({ id }) => {
+    getOneFriend: async (_: any, { id }) => {
       // return new FriendClass(id, friendDatabase[id]);
       return Friends.findById({ _id: id });
     },
