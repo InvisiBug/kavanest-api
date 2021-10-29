@@ -6,7 +6,8 @@ type Query {
   getAllAliens: [Alien]
   getRadiator: [Radiator]
   getFloodlight: [Floodlight]
-  getRawSensor: [Sensor]
+  getRawSensors: [Sensor]
+  getSensor(room: String): Sensor
 }
 
 type Mutation {

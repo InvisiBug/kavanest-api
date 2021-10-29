@@ -18,8 +18,11 @@ const resolvers = {
     getFloodlight: async () => {
       return await FloodLightStore.find();
     },
-    getRawSensor: async () => {
+    getRawSensors: async () => {
       return await SensorStore.find();
+    },
+    getSensor: async (_: any, { room }) => {
+      return await SensorStore.findOne({ room: room });
     },
   },
   Mutation: {
