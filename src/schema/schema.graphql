@@ -6,6 +6,7 @@ type Query {
   getAllAliens: [Alien]
   getRadiator: [Radiator]
   getFloodlight: [Floodlight]
+  getRawSensor: [Sensor]
 }
 
 type Mutation {
@@ -34,6 +35,12 @@ input ContactInput {
 
 ##########################################
 #* Data
+type Sensor {
+  room: String
+  temperature: Float
+  humidity: Float
+}
+
 type Radiator {
   room: String
   inlet: Float

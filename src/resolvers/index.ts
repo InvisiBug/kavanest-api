@@ -1,5 +1,5 @@
 import { friend, books } from "../mocks";
-import { FriendStore, AlienStore, RadiatorStore, FloodLightStore } from "../database";
+import { FriendStore, AlienStore, RadiatorStore, FloodLightStore, SensorStore } from "../database";
 
 const resolvers = {
   Query: {
@@ -17,6 +17,9 @@ const resolvers = {
     },
     getFloodlight: async () => {
       return await FloodLightStore.find();
+    },
+    getRawSensor: async () => {
+      return await SensorStore.find();
     },
   },
   Mutation: {
