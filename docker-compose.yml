@@ -1,29 +1,17 @@
-version: "2"
+version: "3.1"
 services:
-  # app:
-  # container_name: graphql-app
-  # restart: always
-  # build: .
-  # ports:
-  #   - "4000:4000"
-  # links:
-  #   - mongo
-
-  mongo:
-    container_name: graphql-mongo
-    image: mongo
-    volumes:
-      - ./data:/data/db
+  kavanest-api:
+    container_name: kavanest-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - proxynet
+    environment:
+      - URI='mongodb://kavanest-mongo:27017/devices'
     ports:
-      - "27017:27017"
+      - 4000:4000
 
-      # admin-mongo:
-      #   image: 0x59/admin-mongo:latest
-      #   ports:
-      #     - "8082:8082"
-      #   environment:
-      #     - PORT=8082
-      #     - CONN_NAME=mongo
-      #     - DB_HOST=mongo
-      #   links:
-      # - mongo
+networks:
+  proxynet:
+    name: kavanest-devnet

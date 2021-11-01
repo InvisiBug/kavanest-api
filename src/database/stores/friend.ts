@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 import { Friend } from "../schemas";
 
-export const friendConnection = mongoose.createConnection("mongodb://localhost:27017/friend");
+const URI = process.env.URI ?? "";
+
+export const friendConnection = mongoose.createConnection(URI);
 export const FriendStore = friendConnection.model("friend", Friend);
 
 friendConnection.on("connected", () => {

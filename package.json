@@ -4,7 +4,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec \"ts-node \" ./src/index.ts",
-    "build": "tsc"
+    "build": "tsc && yarn copy:schema",
+    "up": "clear && ./bin/start-container.sh",
+    "down": "docker-compose down",
+    "logs": "docker logs kavanest-api -f",
+    "copy:schema": "cp -r ./src/schema ./dist/schema"
   },
   "repository": "https://github.com/InvisiBug/Kavanet-Mongo.git",
   "author": "InvisiBug <matthewjkavanagh@gmail.com>",
