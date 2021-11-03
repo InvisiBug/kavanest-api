@@ -14,7 +14,8 @@ devicesConnection.on("connected", () => {
 devicesConnection.on("error", (err) => {
   console.log("Mongoose connection error" + err);
 });
-interface FloodLight {
+
+interface FloodLight  {
   id: string;
   state: string;
 }

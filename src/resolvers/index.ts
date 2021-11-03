@@ -1,4 +1,4 @@
-import { FriendStore, AlienStore, RadiatorStore, FloodLightStore, SensorStore } from "../database";
+import { RadiatorStore, FloodLightStore, SensorStore } from "../database";
 
 const resolvers = {
   Query: {
@@ -12,6 +12,7 @@ const resolvers = {
     //   return await AlienStore.find();
     // },
     getRadiator: async () => {
+      console.log(await RadiatorStore.find());
       return await RadiatorStore.find();
     },
     getFloodlight: async () => {
