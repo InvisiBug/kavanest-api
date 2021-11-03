@@ -1,21 +1,7 @@
-export default class FriendClass {
-  id: String;
-  firstName: String;
-  lastName: String;
-  gender: String;
-  email: String;
-  age: Number;
-  contacts: any;
+require("dotenv").config();
 
-  constructor(id: String, { firstName, lastName, gender, email, age, contacts }) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.gender = gender;
-    this.email = email;
-    this.age = age;
-    this.contacts = contacts;
-  }
-}
-export { default as Friends } from "./docs/friends";
-export { default as Aliens } from "./docs/aliens";
+export const options = { new: true, upsert: true };
+
+export { FloodLightStore } from "./stores/devices";
+export { RadiatorStore } from "./stores/devices";
+export { SensorStore } from "./stores/devices";

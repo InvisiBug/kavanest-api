@@ -6,10 +6,10 @@
     "esModuleInterop": true,
     "noEmitOnError": true,
     "noUnusedLocals": false, // ! Turn this back on later
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "resolveJsonModule": true,
     "strict": false,
-    "outDir": "dist/"
+    "outDir": "dist"
   },"include": [
     "src/*"]
 }

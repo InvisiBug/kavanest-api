@@ -1,37 +1,57 @@
 ##########################################
 #* Queries & Mutations
 type Query {
-  friend: Friend
-  getOneFriend(id: ID): Friend
-  getAliens: [Alien]
+  # friend: Friend
+  # getOneFriend(id: ID): Friend
+  # getAllAliens: [Alien]
+  getRadiator: [Radiator]
+  getFloodlight: [Floodlight]
+  getRawSensors: [Sensor]
+  getSensor(room: String): Sensor
 }
 
-type Mutation {
-  createFriend(input: FriendInput): Friend
-  updateFriend(input: FriendInput): Friend
-  deleteFriend(id: ID!): String
-}
+# type Mutation {
+#   createFriend(input: FriendInput): Friend
+#   updateFriend(input: FriendInput): Friend
+#   deleteFriend(id: ID!): String
+# }
 
 ##########################################
 #* Inputs
-input FriendInput {
-  id: ID
-  firstName: String
-  lastName: String
-  gender: Gender
-  email: String
-  age: Int
-  language: String
-  contacts: [ContactInput]
-}
+# input FriendInput {
+#   id: ID
+#   firstName: String
+#   lastName: String
+#   gender: Gender
+#   email: String
+#   age: Int
+#   language: String
+#   contacts: [ContactInput]
+# }
 
-input ContactInput {
-  firstName: String
-  lastName: String
-}
+# input ContactInput {
+#   firstName: String
+#   lastName: String
+# }
 
 ##########################################
 #* Data
+type Sensor {
+  room: String
+  temperature: Float
+  humidity: Float
+}
+
+type Radiator {
+  room: String
+  inlet: Float
+  outlet: Float
+}
+
+type Floodlight {
+  state: Boolean
+}
+
 type Friend {
   id: ID
   firstName: String

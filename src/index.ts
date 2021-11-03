@@ -9,7 +9,7 @@ import path from "path";
 const typeDefs = readFileSync(path.resolve(__dirname, "./schema/schema.graphql"), "utf-8");
 const schema = makeExecutableSchema({ resolvers, typeDefs });
 
-const logging: Boolean = true;
+const logging: Boolean = false;
 
 const server = new ApolloServer({
   schema,
@@ -17,5 +17,5 @@ const server = new ApolloServer({
 });
 
 server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
+  console.log(`🚀 Server ready at ${url}`);
 });
