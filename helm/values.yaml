@@ -1,0 +1,18 @@
+name: kavanest-api
+
+namespace: kavanest
+
+deployment:
+  - name: kavanest-api
+    image: 192.168.1.61:5000/kavanest-api
+    ports:
+    - port: 4000
+    env:
+    - name: URI
+      value: mongodb://kavanest-mongo:27017/devices
+service:
+  loadBalancer:
+    - name: kavanest-api
+      selector: kavanest-api
+      port: 4000
+
