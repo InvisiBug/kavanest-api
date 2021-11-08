@@ -1,7 +1,6 @@
-require("dotenv").config();
-
 export const options = { new: true, upsert: true };
 
-export { FloodLightStore } from "./stores/devices";
-export { RadiatorStore } from "./stores/devices";
-export { SensorStore } from "./stores/devices";
+export { floodlightStore } from "./stores/devices";
+export { radiatorStore } from "./stores/devices";
+export { sensorStore } from "./stores/devices";
+export { plugStore } from "./stores/devices";

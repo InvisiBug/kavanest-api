@@ -1,52 +1,54 @@
-import { RadiatorStore, FloodLightStore, SensorStore } from "../database";
+import { radiatorStore, floodlightStore, sensorStore, plugStore } from "../database";
+import { updatePlug } from "../controllers/index";
+require("dotenv").config();
+import mqtt from "mqtt";
+
+const MQTT: string = process.env.MQTT ?? "";
 
 const resolvers = {
   Query: {
-    // friend: () => {
-    //   return friend;
-    // },
-    // getOneFriend: async (_: any, { id }) => {
-    //   return FriendStore.findById({ _id: id });
-    // },
-    // getAllAliens: async () => {
-    //   return await AlienStore.find();
-    // },
     getRadiator: async () => {
-      console.log(await RadiatorStore.find());
-      return await RadiatorStore.find();
+      return await radiatorStore.find();
+    },
+    getPlugs: async () => {
+      return await plugStore.find();
+    },
+    getPlug: async (_: any, { name }) => {
+      return await plugStore.findOne({ name });
     },
     getFloodlight: async () => {
-      return await FloodLightStore.find();
+      return await floodlightStore.find();
     },
     getRawSensors: async () => {
-      return await SensorStore.find();
+      return await sensorStore.find();
     },
     getSensor: async (_: any, { room }) => {
-      return await SensorStore.findOne({ room: room });
+      return await sensorStore.findOne({ room: room });
     },
   },
-  // Mutation: {
-  // createFriend: async (_: any, { input }) => {
-  //   const newFriend = new FriendStore({
-  //     firstName: input.firstName,
-  //     lastName: input.lastName,
-  //     gender: input.gender,
-  //     age: input.age,
-  //     email: input.email,
-  //     language: input.language,
-  //     contacs: input.contacts,
-  //   });
-  //   const output = await newFriend.save();
-  //   return output;
-  // },
-  // updateFriend: async (_: any, { input }) => {
-  //   return await FriendStore.findOneAndUpdate({ _id: input.id }, input, { new: true });
-  // },
-  // deleteFriend: async (_: any, { id }) => {
-  //   await FriendStore.deleteOne({ _id: id });
-  //   return "Deleted Friend";
-  // },
-  // },
+  Mutation: {
+    updatePlug,
+    // createFriend: async (_: any, { input }) => {
+    //   const newFriend = new FriendStore({
+    //     firstName: input.firstName,
+    //     lastName: input.lastName,
+    //     gender: input.gender,
+    //     age: input.age,
+    //     email: input.email,
+    //     language: input.language,
+    //     contacs: input.contacts,
+    //   });
+    //   const output = await newFriend.save();
+    //   return output;
+    // },
+    // updateFriend: async (_: any, { input }) => {
+    //   return await FriendStore.findOneAndUpdate({ _id: input.id }, input, { new: true });
+    // },
+    // deleteFriend: async (_: any, { id }) => {
+    //   await FriendStore.deleteOne({ _id: id });
+    //   return "Deleted Friend";
+    // },
+  },
 };
 
 export default resolvers;
