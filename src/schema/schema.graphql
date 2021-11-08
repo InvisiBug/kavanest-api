@@ -8,13 +8,16 @@ type Query {
   getFloodlight: [Floodlight]
   getRawSensors: [Sensor]
   getSensor(room: String): Sensor
+  getPlugs: [Plug]
+  getPlug(name: String): Plug
 }
 
-# type Mutation {
-#   createFriend(input: FriendInput): Friend
-#   updateFriend(input: FriendInput): Friend
-#   deleteFriend(id: ID!): String
-# }
+type Mutation {
+  updatePlug(input: PlugInput): Plug
+  # createFriend(input: FriendInput): Friend
+  # updateFriend(input: FriendInput): Friend
+  # deleteFriend(id: ID!): String
+}
 
 ##########################################
 #* Inputs
@@ -33,6 +36,10 @@ type Query {
 #   firstName: String
 #   lastName: String
 # }
+input PlugInput {
+  name: String
+  state: Boolean
+}
 
 ##########################################
 #* Data
@@ -40,6 +47,12 @@ type Sensor {
   room: String
   temperature: Float
   humidity: Float
+}
+
+type Plug {
+  name: String
+  state: Boolean
+  connected: Boolean
 }
 
 type Radiator {

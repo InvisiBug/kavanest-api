@@ -1,3 +1,4 @@
-export { default as Floodlight } from "./floodlight";
-export { default as Radiator } from "./radiator";
-export { default as Sensor } from "./sensor";
+export { default as floodlightSchema } from "./floodlight";
+export { default as radiatorSchema } from "./radiator";
+export { default as sensorSchema } from "./sensor";
+export { default as plugSchema } from "./plug";
