@@ -1,1 +1,1 @@
-export { default as updatePlug } from "./devices/plugs";
+export { default as updatePlug } from "./devices/plug";

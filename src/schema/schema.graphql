@@ -5,7 +5,6 @@ type Query {
   # getOneFriend(id: ID): Friend
   # getAllAliens: [Alien]
   getRadiator: [Radiator]
-  getFloodlight: [Floodlight]
   getAllSensors: [Sensor]
   getSensor(room: String): Sensor
   getPlugs: [Plug]
@@ -70,8 +69,4 @@ type Radiator {
   room: String
   inlet: Float
   outlet: Float
-}
-
-type Floodlight {
-  state: Boolean
 }

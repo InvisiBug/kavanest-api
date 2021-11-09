@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const RoomOffsetSchema = new mongoose.Schema({
+const offsetSchema = new mongoose.Schema({
   name: { type: String },
   livingRoom: { type: Number },
   kitchen: { type: Number },
@@ -9,4 +9,4 @@ const RoomOffsetSchema = new mongoose.Schema({
   ourRoom: { type: Number },
 });
 
-export default RoomOffsetSchema;
+export default offsetSchema;

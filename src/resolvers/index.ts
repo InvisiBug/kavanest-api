@@ -1,4 +1,4 @@
-import { radiatorStore, floodlightStore, sensorStore, plugStore, offsetStore } from "../database";
+import { radiatorStore, sensorStore, plugStore, offsetStore } from "../database";
 import { updatePlug } from "./controllers";
 
 const resolvers = {
@@ -11,9 +11,6 @@ const resolvers = {
     },
     getPlug: async (_: any, { name }) => {
       return await plugStore.findOne({ name });
-    },
-    getFloodlight: async () => {
-      return await floodlightStore.find();
     },
     getAllSensors: async () => {
       return await sensorStore.find();
