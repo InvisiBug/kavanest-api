@@ -5,11 +5,11 @@ type Query {
   # getOneFriend(id: ID): Friend
   # getAllAliens: [Alien]
   getRadiator: [Radiator]
-  getFloodlight: [Floodlight]
-  getRawSensors: [Sensor]
+  getAllSensors: [Sensor]
   getSensor(room: String): Sensor
   getPlugs: [Plug]
   getPlug(name: String): Plug
+  getOffsets: [Offsets]
 }
 
 type Mutation {
@@ -45,8 +45,18 @@ input PlugInput {
 #* Data
 type Sensor {
   room: String
+  rawTemperature: Float
   temperature: Float
   humidity: Float
+  connected: Boolean
+}
+
+type Offsets {
+  livingRoom: Float
+  kitchen: Float
+  liamsRoom: Float
+  study: Float
+  ourRoom: Float
 }
 
 type Plug {
@@ -59,46 +69,4 @@ type Radiator {
   room: String
   inlet: Float
   outlet: Float
-}
-
-type Floodlight {
-  state: Boolean
-}
-
-type Friend {
-  id: ID
-  firstName: String
-  lastName: String
-  gender: Gender
-  email: String
-  age: Int
-  Language: String
-  contacts: [Contact]
-}
-
-type Alien {
-  id: ID
-  firstName: String
-  lastName: String
-  planet: String
-}
-
-type Contact {
-  firstName: String
-  lastName: String
-}
-
-enum Gender {
-  MALE
-  FEMALE
-  OTHER
-}
-
-type Email {
-  email: String
-}
-
-type Books {
-  title: String
-  author: String
 }
