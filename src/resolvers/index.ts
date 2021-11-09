@@ -1,4 +1,3 @@
-// import { radiatorStore, sensorStore, plugStore, offsetStore } from "../database";
 import { radiatorStore, sensorStore, plugStore, offsetStore } from "kavanest-store";
 import { updatePlug } from "./controllers";
 
