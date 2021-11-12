@@ -8,7 +8,9 @@
     "up": "clear && ./bin/start-container.sh",
     "down": "docker-compose down",
     "logs": "docker logs kavanest-api -f",
-    "copy:schema": "cp -r ./src/schema ./dist/schema"
+    "copy:schema": "cp -r ./src/schema ./dist/schema",
+    "push": "./bin/push.sh",
+    "deploy": "yarn push && ./bin/deploy.sh"
   },
   "repository": "https://github.com/InvisiBug/Kavanet-Mongo.git",
   "author": "InvisiBug <matthewjkavanagh@gmail.com>",

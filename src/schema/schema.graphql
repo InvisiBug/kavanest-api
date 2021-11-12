@@ -9,11 +9,12 @@ type Query {
   getSensor(room: String): Sensor
   getPlugs: [Plug]
   getPlug(name: String): Plug
-  getOffsets: [Offsets]
+  getOffsets: Offsets
 }
 
 type Mutation {
   updatePlug(input: PlugInput): Plug
+  offsets(input: offsetsInput): Offsets
   # createFriend(input: FriendInput): Friend
   # updateFriend(input: FriendInput): Friend
   # deleteFriend(id: ID!): String
@@ -31,6 +32,16 @@ type Mutation {
 #   language: String
 #   contacts: [ContactInput]
 # }
+
+input offsetsInput {
+  livingRoom: Float
+  kitchen: Float
+  liamsRoom: Float
+  study: Float
+  ourRoom: Float
+}
+
+# input offsetsInput = Offsets
 
 # input ContactInput {
 #   firstName: String

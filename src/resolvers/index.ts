@@ -1,5 +1,6 @@
 import { radiatorStore, sensorStore, plugStore, offsetStore } from "kavanest-store";
 import { updatePlug } from "./controllers";
+import offsets from "./setpoints/offsets";
 
 const resolvers = {
   Query: {
@@ -19,11 +20,12 @@ const resolvers = {
       return await sensorStore.findOne({ room: room });
     },
     getOffsets: async () => {
-      return await offsetStore.find();
+      return await offsetStore.findOne({ name: "roomOffsets" });
     },
   },
   Mutation: {
     updatePlug,
+    offsets,
   },
 };
 
