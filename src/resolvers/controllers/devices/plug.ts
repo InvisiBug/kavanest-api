@@ -1,11 +1,8 @@
 import { plugStore, options } from "kavanest-store";
-
 import mqtt from "mqtt";
 require("dotenv").config();
 
-const MQTT: string = process.env.MQTT ?? "";
-
-let client: mqtt.MqttClient = mqtt.connect(MQTT);
+let client: mqtt.MqttClient = mqtt.connect(process.env.MQTT ?? "");
 
 export default async (_: any, { input: { name, state } }: Args) => {
   switch (name) {

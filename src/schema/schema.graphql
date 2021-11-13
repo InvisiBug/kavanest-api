@@ -5,16 +5,23 @@ type Query {
   # getOneFriend(id: ID): Friend
   # getAllAliens: [Alien]
   getRadiator: [Radiator]
+
   getAllSensors: [Sensor]
   getSensor(room: String): Sensor
+
   getPlugs: [Plug]
   getPlug(name: String): Plug
+
   getOffsets: Offsets
+
+  getValves: [Valve]
+  getValve(name: String): Valve
 }
 
 type Mutation {
   updatePlug(input: PlugInput): Plug
   offsets(input: offsetsInput): Offsets
+  updateRGBLights(input: RGBLightInput): RGBLight
   # createFriend(input: FriendInput): Friend
   # updateFriend(input: FriendInput): Friend
   # deleteFriend(id: ID!): String
@@ -41,12 +48,14 @@ input offsetsInput {
   ourRoom: Float
 }
 
-# input offsetsInput = Offsets
+input RGBLightInput {
+  name: String
+  red: Int
+  green: Int
+  blue: Int
+  mode: Int
+}
 
-# input ContactInput {
-#   firstName: String
-#   lastName: String
-# }
 input PlugInput {
   name: String
   state: Boolean
@@ -59,6 +68,22 @@ type Sensor {
   rawTemperature: Float
   temperature: Float
   humidity: Float
+  connected: Boolean
+}
+
+type Valve {
+  name: String
+  state: Boolean
+  demand: Boolean
+  connected: Boolean
+}
+
+type RGBLight {
+  name: String
+  red: Int
+  green: Int
+  blue: Int
+  mode: Int
   connected: Boolean
 }
 
