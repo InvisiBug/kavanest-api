@@ -10,9 +10,16 @@ deployment:
     env:
     - name: URI
       value: mongodb://kavanest-mongo:27017/devices
+
+ingress:
+  - name: api.kavanet.io
+    selector: kavanest-api
+    path: /
+    port: 4000
+    host: api.kavanet.io
+
 service:
   loadBalancer:
     - name: kavanest-api
       selector: kavanest-api
       port: 4000
-
