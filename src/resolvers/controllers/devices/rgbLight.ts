@@ -1,4 +1,4 @@
-import { rgbLightStore, options } from "kavanest-store";
+import { rgbLightStore, options } from "../../../database";
 import mqtt from "mqtt";
 require("dotenv").config();
 

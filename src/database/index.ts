@@ -1,3 +1,6 @@
+//* These mongo docs seem to work fine
+// https://mongodb.github.io/node-mongodb-native/3.6/api/Collection.html#findOneAndUpdate
+
 import Mongo from "./mongo";
 
 const db = "devices";
@@ -9,4 +12,9 @@ export const sensorStore = new Mongo(db, "sensors").collection;
 export const valveStore = new Mongo(db, "valves").collection;
 export const plugStore = new Mongo(db, "plugs").collection;
 
-export const options = { new: true, upsert: true };
+export const options: Options = { returnDocument: "after", upsert: true };
+
+interface Options {
+  returnDocument: "before" | "after";
+  upsert: boolean;
+}

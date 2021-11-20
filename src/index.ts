@@ -6,7 +6,7 @@ import { log } from "./helpers";
 import path from "path";
 
 //* GraphQL server config
-const typeDefs = readFileSync(path.resolve(__dirname, "./schema/schema.graphql"), "utf-8");
+const typeDefs = readFileSync(path.resolve(__dirname, "./schema/schema.gql"), "utf-8");
 const schema = makeExecutableSchema({ resolvers, typeDefs });
 
 const logging: Boolean = false;

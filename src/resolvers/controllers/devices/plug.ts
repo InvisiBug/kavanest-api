@@ -1,4 +1,4 @@
-import { plugStore, options } from "kavanest-store";
+import { plugStore, options } from "../../../database";
 import mqtt from "mqtt";
 require("dotenv").config();
 
@@ -8,19 +8,23 @@ export default async (_: any, { input: { name, state } }: Args) => {
   switch (name) {
     case "floodlight":
       toggle(state, "Plug Control", "1", "0");
-      return await plugStore.findOneAndUpdate({ name: name }, { state: state }, options);
+      const floodlight = await plugStore.findOneAndUpdate({ name: name }, { $set: { state: state } }, options);
+      return floodlight.value;
 
     case "sun":
       toggle(state, "Sun Control", "1", "0");
-      return await plugStore.findOneAndUpdate({ name: name }, { state: state }, options);
+      const sun = await plugStore.findOneAndUpdate({ name: name }, { $set: { state: state } }, options);
+      return sun.value;
 
     case "heating":
       toggle(state, "Heating Control", "1", "0");
-      return await plugStore.findOneAndUpdate({ name: name }, { state: state }, options);
+      const heating = await plugStore.findOneAndUpdate({ name: name }, { $set: { state: state } }, options);
+      return heating.value;
 
     case "radiatorFan":
       toggle(state, "Radiator Fan Control", "1", "0");
-      return await plugStore.findOneAndUpdate({ name: name }, { state: state }, options);
+      const radiatorFan = await plugStore.findOneAndUpdate({ name: name }, { $set: { state: state } }, options);
+      return radiatorFan.value;
   }
 };
 
