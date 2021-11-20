@@ -8,20 +8,23 @@ export default async (_: any, { input: { name, red, green, blue, mode } }: Args)
   switch (name) {
     case "deskLEDs":
       updateRGB("Desk LED Control", { red, green, blue });
-      return await rgbLightStore.findOneAndUpdate({ name: name }, { red, green, blue }, options);
+      const deskLEDs = await rgbLightStore.findOneAndUpdate({ name: name }, { $set: { red, green, blue } }, options);
+      return deskLEDs.value;
 
     case "screenLEDs":
       if (mode != undefined) {
         updateMode("Screen LEDs Control", mode);
-        return await rgbLightStore.findOneAndUpdate({ name: name }, { mode }, options);
+        const screenLEDsMode = await rgbLightStore.findOneAndUpdate({ name: name }, { $set: { mode } }, options);
+        return screenLEDsMode.value;
       }
 
       updateRGB("Screen LEDs Control", { red, green, blue });
-      return await rgbLightStore.findOneAndUpdate({ name: name }, { red, green, blue }, options);
+      const screenLEDs = await rgbLightStore.findOneAndUpdate({ name: name }, { $set: { red, green, blue } }, options);
+      return screenLEDs.value;
 
     case "tableLamp":
       updateRGB("Table Lamp Control", { red, green, blue });
-      return await rgbLightStore.findOneAndUpdate({ name: name }, { red, green, blue }, options);
+      return await rgbLightStore.findOneAndUpdate({ name: name }, { $set: { red, green, blue } }, options);
   }
 };
 
