@@ -1,41 +1,45 @@
 ##########################################
 #* Queries & Mutations
 type Query {
-  # friend: Friend
-  # getOneFriend(id: ID): Friend
-  # getAllAliens: [Alien]
-  getRadiator: [Radiator]
+  getRadiator: Radiator
+
   getAllSensors: [Sensor]
   getSensor(room: String): Sensor
+
   getPlugs: [Plug]
   getPlug(name: String): Plug
-  getOffsets: [Offsets]
+
+  getOffsets: Offsets
+
+  getValves: [Valve]
+  getValve(name: String): Valve
 }
 
 type Mutation {
   updatePlug(input: PlugInput): Plug
-  # createFriend(input: FriendInput): Friend
-  # updateFriend(input: FriendInput): Friend
-  # deleteFriend(id: ID!): String
+  offsets(input: offsetsInput): Offsets
+  updateRGBLights(input: RGBLightInput): RGBLight
 }
 
 ##########################################
 #* Inputs
-# input FriendInput {
-#   id: ID
-#   firstName: String
-#   lastName: String
-#   gender: Gender
-#   email: String
-#   age: Int
-#   language: String
-#   contacts: [ContactInput]
-# }
 
-# input ContactInput {
-#   firstName: String
-#   lastName: String
-# }
+input offsetsInput {
+  livingRoom: Float
+  kitchen: Float
+  liamsRoom: Float
+  study: Float
+  ourRoom: Float
+}
+
+input RGBLightInput {
+  name: String
+  red: Int
+  green: Int
+  blue: Int
+  mode: Int
+}
+
 input PlugInput {
   name: String
   state: Boolean
@@ -48,6 +52,22 @@ type Sensor {
   rawTemperature: Float
   temperature: Float
   humidity: Float
+  connected: Boolean
+}
+
+type Valve {
+  name: String
+  state: Boolean
+  demand: Boolean
+  connected: Boolean
+}
+
+type RGBLight {
+  name: String
+  red: Int
+  green: Int
+  blue: Int
+  mode: Int
   connected: Boolean
 }
 

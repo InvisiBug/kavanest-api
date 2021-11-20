@@ -1,29 +1,30 @@
-import { plugStore, options } from "kavanest-store";
-
+import { plugStore, options } from "../../../database";
 import mqtt from "mqtt";
 require("dotenv").config();
 
-const MQTT: string = process.env.MQTT ?? "";
+let client: mqtt.MqttClient = mqtt.connect(process.env.MQTT ?? "");
 
-let client: mqtt.MqttClient = mqtt.connect(MQTT);
-
-export default async (_: any, { input }) => {
-  switch (input.name) {
+export default async (_: any, { input: { name, state } }: Args) => {
+  switch (name) {
     case "floodlight":
-      toggle(input.state, "Plug Control", "1", "0");
-      return await plugStore.findOneAndUpdate({ name: input.name }, { state: input.state }, options);
+      toggle(state, "Plug Control", "1", "0");
+      const floodlight = await plugStore.findOneAndUpdate({ name: name }, { $set: { state: state } }, options);
+      return floodlight.value;
 
     case "sun":
-      toggle(input.state, "Sun Control", "1", "0");
-      return await plugStore.findOneAndUpdate({ name: input.name }, { state: input.state }, options);
+      toggle(state, "Sun Control", "1", "0");
+      const sun = await plugStore.findOneAndUpdate({ name: name }, { $set: { state: state } }, options);
+      return sun.value;
 
     case "heating":
-      toggle(input.state, "Heating Control", "1", "0");
-      return await plugStore.findOneAndUpdate({ name: input.name }, { state: input.state }, options);
+      toggle(state, "Heating Control", "1", "0");
+      const heating = await plugStore.findOneAndUpdate({ name: name }, { $set: { state: state } }, options);
+      return heating.value;
 
     case "radiatorFan":
-      toggle(input.state, "Radiator Fan Control", "1", "0");
-      return await plugStore.findOneAndUpdate({ name: input.name }, { state: input.state }, options);
+      toggle(state, "Radiator Fan Control", "1", "0");
+      const radiatorFan = await plugStore.findOneAndUpdate({ name: name }, { $set: { state: state } }, options);
+      return radiatorFan.value;
   }
 };
 
@@ -33,4 +34,13 @@ const toggle = (state: boolean, topic: string, trueMsg: string, falseMsg: string
   } else {
     client.publish(topic, falseMsg);
   }
+};
+
+export interface Args {
+  input: Input;
+}
+
+type Input = {
+  name: string;
+  state: boolean;
 };

@@ -8,6 +8,12 @@ services:
     networks:
       - proxynet
     environment:
+      # Use to get data from live system
+      # - MQTT=mqtt://kavanet.io
+
+      # Use to get data from simulator
+      - MQTT=mqtt://kavanest-sim-mqtt
+
       - URI=mongodb://kavanest-mongo:27017/devices
     ports:
       - 4000:4000
