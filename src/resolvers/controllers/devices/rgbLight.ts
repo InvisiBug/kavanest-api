@@ -37,13 +37,11 @@ const updateMode = (topic: string, msg: number) => {
 };
 
 export interface Args {
-  input: Input;
+  input: {
+    name: string;
+    red: number;
+    green: number;
+    blue: number;
+    mode: number;
+  };
 }
-
-type Input = {
-  name: string;
-  red: number;
-  green: number;
-  blue: number;
-  mode: number;
-};

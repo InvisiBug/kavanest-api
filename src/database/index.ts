@@ -12,6 +12,8 @@ export const sensorStore = new Mongo(db, "sensors").collection;
 export const valveStore = new Mongo(db, "valves").collection;
 export const plugStore = new Mongo(db, "plugs").collection;
 
+export const setpointsStore = new Mongo("setpoints", "setpoints").collection;
+
 export const options: Options = { returnDocument: "after", upsert: true };
 
 interface Options {

@@ -1,6 +1,7 @@
 import { radiatorStore, sensorStore, plugStore, offsetStore, valveStore } from "../database";
 import { updatePlug, updateRGBLights } from "./controllers";
-import offsets from "./setpoints/offsets";
+import updateOffset from "./setpoints/offsets";
+import { setpoint } from "./setpoints";
 
 const resolvers = {
   Query: {
@@ -18,13 +19,11 @@ const resolvers = {
 
     // Sensors
     getAllSensors: async () => {
-      return await sensorStore.find().toArray();
+      const sensors = await sensorStore.find().toArray();
+      return sensors;
     },
     getSensor: async (_: any, { room }) => {
       return await sensorStore.findOne({ room: room });
-    },
-    getOffsets: async () => {
-      return await offsetStore.findOne({ name: "roomOffsets" });
     },
 
     // Valves
@@ -37,8 +36,9 @@ const resolvers = {
   },
   Mutation: {
     updatePlug,
-    offsets,
+    updateOffset,
     updateRGBLights,
+    setpoint,
   },
 };
 

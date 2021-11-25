@@ -37,10 +37,8 @@ const toggle = (state: boolean, topic: string, trueMsg: string, falseMsg: string
 };
 
 export interface Args {
-  input: Input;
+  input: {
+    name: string;
+    state: boolean;
+  };
 }
-
-type Input = {
-  name: string;
-  state: boolean;
-};
