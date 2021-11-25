@@ -1,7 +1,7 @@
-import { radiatorStore, sensorStore, plugStore, offsetStore, valveStore } from "../database";
+import { radiatorStore, sensorStore, plugStore, setpointsStore, valveStore } from "../database";
 import { updatePlug, updateRGBLights } from "./controllers";
 import updateOffset from "./setpoints/offsets";
-import { setpoint } from "./setpoints";
+import { updateSetpoint } from "./setpoints";
 
 const resolvers = {
   Query: {
@@ -19,11 +19,17 @@ const resolvers = {
 
     // Sensors
     getAllSensors: async () => {
-      const sensors = await sensorStore.find().toArray();
-      return sensors;
+      return await sensorStore.find().toArray();
     },
     getSensor: async (_: any, { room }) => {
       return await sensorStore.findOne({ room: room });
+    },
+
+    getAllSetpoints: async () => {
+      return await setpointsStore.find().toArray();
+    },
+    getSetpoints: async (_: any, { room }) => {
+      return await setpointsStore.findOne({ room: room });
     },
 
     // Valves
@@ -38,7 +44,7 @@ const resolvers = {
     updatePlug,
     updateOffset,
     updateRGBLights,
-    setpoint,
+    updateSetpoint,
   },
 };
 

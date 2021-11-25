@@ -3,20 +3,18 @@
 
 import Mongo from "./mongo";
 
-const db = "devices";
+export const rgbLightStore = new Mongo("devices", "rgbLight").collection;
+export const radiatorStore = new Mongo("devices", "radiator").collection;
+export const offsetStore = new Mongo("devices", "offsets").collection;
+export const sensorStore = new Mongo("devices", "sensors").collection;
+export const valveStore = new Mongo("devices", "valves").collection;
+export const plugStore = new Mongo("devices", "plugs").collection;
 
-export const rgbLightStore = new Mongo(db, "rgbLight").collection;
-export const radiatorStore = new Mongo(db, "radiator").collection;
-export const offsetStore = new Mongo(db, "offsets").collection;
-export const sensorStore = new Mongo(db, "sensors").collection;
-export const valveStore = new Mongo(db, "valves").collection;
-export const plugStore = new Mongo(db, "plugs").collection;
-
-export const setpointsStore = new Mongo("setpoints", "setpoints").collection;
+export const setpointsStore = new Mongo("heatingController", "setpoints").collection;
 
 export const options: Options = { returnDocument: "after", upsert: true };
 
-interface Options {
+export interface Options {
   returnDocument: "before" | "after";
   upsert: boolean;
 }

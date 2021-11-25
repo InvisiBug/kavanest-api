@@ -11,18 +11,20 @@ type Query {
 
   getValves: [Valve]
   getValve(name: String): Valve
+
+  getAllSetpoints: [Setpoint]
+  getSetpoints(room: String): Setpoint
 }
 
 type Mutation {
   updatePlug(input: PlugInput): Plug
   updateOffset(input: offsetsInput): Sensor
   updateRGBLights(input: RGBLightInput): RGBLight
-  setpoint(input: SetpointInput): Setpoint
+  updateSetpoint(input: SetpointInput): Setpoint
 }
 
 ##########################################
 #* Inputs
-
 input offsetsInput {
   room: String
   offset: Float
@@ -42,17 +44,24 @@ input PlugInput {
 }
 
 input SetpointInput {
+  room: String
   time: String
   temp: Float
 }
 
 ##########################################
+#* Data
 type Setpoint {
+  room: String
+  setpoints: Setpoints
+}
+
+scalar Setpoints
+{
   time: String
   temp: Float
 }
 
-#* Data
 type Sensor {
   room: String
   rawTemperature: Float
