@@ -5,6 +5,7 @@ require("dotenv").config();
 let client: mqtt.MqttClient = mqtt.connect(process.env.MQTT ?? "");
 
 export default async (_: any, { input: { name, state } }: Args) => {
+  console.log("here");
   switch (name) {
     case "floodlight":
       toggle(state, "Plug Control", "1", "0");

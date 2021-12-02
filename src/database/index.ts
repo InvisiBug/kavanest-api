@@ -3,8 +3,8 @@
 
 import Mongo from "./mongo";
 
-export const rgbLightStore = new Mongo("devices", "rgbLight").collection;
-export const radiatorStore = new Mongo("devices", "radiator").collection;
+export const rgbLightStore = new Mongo("devices", "rgbLights").collection;
+export const radiatorStore = new Mongo("devices", "radiators").collection;
 export const offsetStore = new Mongo("devices", "offsets").collection;
 export const sensorStore = new Mongo("devices", "sensors").collection;
 export const valveStore = new Mongo("devices", "valves").collection;
