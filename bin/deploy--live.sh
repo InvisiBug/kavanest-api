@@ -5,4 +5,3 @@ helm upgrade kavanest-api . \
 --install \
 --namespace kavanest \
 -f values/live.yaml
-# --create-namespace

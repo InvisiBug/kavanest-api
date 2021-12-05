@@ -1,0 +1,32 @@
+name: kavanest-api
+
+namespace: kavanest
+
+deployment:
+  - name: kavanest-api
+    image: 192.168.1.61:5000/kavanest-api
+    ports:
+    - port: 4000
+    env:
+    - name: ENVIRONMENT
+      value: live
+
+    - name: MONGO_LIVE
+      value: mongodb://kavanest-mongo:27017
+
+    - name: MQTT_LIVE
+      value: mqtt://192.168.1.46
+
+ingress:
+  - name: api.kavanet.io
+    selector: kavanest-api
+    path: /
+    port: 4000
+    host: api.kavanet.io
+
+service:
+  loadBalancer:
+    - name: kavanest-api
+      selector: kavanest-api
+      port: 80
+      containerPort: 4000
