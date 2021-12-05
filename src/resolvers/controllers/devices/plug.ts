@@ -1,8 +1,9 @@
 import { plugStore, options } from "../../../database";
 import mqtt from "mqtt";
+import { mqttUrl } from "../../../helpers";
 require("dotenv").config();
 
-let client: mqtt.MqttClient = mqtt.connect(process.env.MQTT ?? "");
+let client: mqtt.MqttClient = mqtt.connect(mqttUrl);
 
 export default async (_: any, { input: { name, state } }: Args) => {
   console.log("here");
