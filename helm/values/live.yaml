@@ -8,8 +8,14 @@ deployment:
     ports:
     - port: 4000
     env:
-    - name: URI
-      value: mongodb://kavanest-mongo:27017/devices
+    - name: ENVIRONMENT
+      value: live
+
+    - name: MONGO_LIVE
+      value: mongodb://kavanest-mongo:27017
+
+    - name: MQTT_LIVE
+      value: mqtt://192.168.1.46
 
 ingress:
   - name: api.kavanet.io
@@ -22,4 +28,5 @@ service:
   loadBalancer:
     - name: kavanest-api
       selector: kavanest-api
-      port: 4000
+      port: 80
+      containerPort: 4000

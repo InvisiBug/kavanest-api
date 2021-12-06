@@ -1,18 +1,14 @@
-import { offsetStore, options } from "../../database";
+import { sensorStore, options } from "../../database";
 
-const offsets = async (_: any, { input: { livingRoom, kitchen, liamsRoom, study, ourRoom } }: Args) => {
-  return await offsetStore.findOneAndUpdate({ name: "roomOffsets" }, { $set: { livingRoom, kitchen, study, liamsRoom, ourRoom } }, options);
+const updateOffset = async (_: any, { input: { room, offset } }: Args) => {
+  const data = await sensorStore.findOneAndUpdate({ room }, { $set: { offset } }, options);
+  return data.value;
 };
-export default offsets;
+export default updateOffset;
 
 export interface Args {
-  input: Input;
-}
-
-interface Input {
-  livingRoom: number;
-  kitchen: number;
-  liamsRoom: number;
-  study: number;
-  ourRoom: number;
+  input: {
+    room: string;
+    offset: number;
+  };
 }

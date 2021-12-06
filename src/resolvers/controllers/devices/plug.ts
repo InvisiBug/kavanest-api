@@ -1,10 +1,12 @@
 import { plugStore, options } from "../../../database";
 import mqtt from "mqtt";
+import { mqttUrl } from "../../../helpers";
 require("dotenv").config();
 
-let client: mqtt.MqttClient = mqtt.connect(process.env.MQTT ?? "");
+let client: mqtt.MqttClient = mqtt.connect(mqttUrl);
 
 export default async (_: any, { input: { name, state } }: Args) => {
+  console.log("here");
   switch (name) {
     case "floodlight":
       toggle(state, "Plug Control", "1", "0");
@@ -37,10 +39,8 @@ const toggle = (state: boolean, topic: string, trueMsg: string, falseMsg: string
 };
 
 export interface Args {
-  input: Input;
+  input: {
+    name: string;
+    state: boolean;
+  };
 }
-
-type Input = {
-  name: string;
-  state: boolean;
-};

@@ -1,8 +1,9 @@
 import { rgbLightStore, options } from "../../../database";
 import mqtt from "mqtt";
+import { mqttUrl } from "../../../helpers";
 require("dotenv").config();
 
-let client: mqtt.MqttClient = mqtt.connect(process.env.MQTT ?? "");
+let client: mqtt.MqttClient = mqtt.connect(mqttUrl);
 
 export default async (_: any, { input: { name, red, green, blue, mode } }: Args) => {
   switch (name) {
@@ -37,13 +38,11 @@ const updateMode = (topic: string, msg: number) => {
 };
 
 export interface Args {
-  input: Input;
+  input: {
+    name: string;
+    red: number;
+    green: number;
+    blue: number;
+    mode: number;
+  };
 }
-
-type Input = {
-  name: string;
-  red: number;
-  green: number;
-  blue: number;
-  mode: number;
-};
