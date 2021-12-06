@@ -2,21 +2,18 @@ version: "3.1"
 services:
   kavanest-api:
     container_name: kavanest-api
+    image: kavanest-api
     build:
       context: .
       dockerfile: Dockerfile
     networks:
       - proxynet
-    environment:
-      # Use to get data from live system
-      # - MQTT=mqtt://kavanet.io
-
-      # Use to get data from simulator
-      - MQTT=mqtt://kavanest-sim-mqtt
-
-      - URI=mongodb://kavanest-mongo:27017/devices
     ports:
       - 4000:4000
+    environment:
+      - ENVIRONMENT=docker
+      - MQTT_DOCKER=mqtt://mosquitto
+      - MONGO_DOCKER=mongodb://kavanest-mongo:27017
 
 networks:
   proxynet:
