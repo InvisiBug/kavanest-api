@@ -10,7 +10,7 @@ type Query {
   getPlug(name: String): Plug
 
   getValves: [Valve]
-  getValve(name: String): Valve
+  getValve(room: String): Valve
 
   getAllSetpoints: [Setpoint]
   getSetpoints(room: String): Setpoint
@@ -72,7 +72,7 @@ type Sensor {
 }
 
 type Valve {
-  name: String
+  room: String
   state: Boolean
   demand: Boolean
   connected: Boolean

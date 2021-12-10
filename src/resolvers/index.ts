@@ -36,8 +36,8 @@ const resolvers = {
     getValves: async () => {
       return await valveStore.find().toArray();
     },
-    getValve: async (_: any, { name }) => {
-      return await valveStore.findOne({ name });
+    getValve: async (_: any, { room }) => {
+      return await valveStore.findOne({ room });
     },
   },
   Mutation: {
