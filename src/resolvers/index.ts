@@ -1,7 +1,7 @@
 import { radiatorStore, sensorStore, plugStore, setpointsStore, valveStore } from "../database";
 import { updatePlug, updateRGBLights } from "./controllers";
 import updateOffset from "./setpoints/offsets";
-import { updateSetpoint } from "./setpoints";
+import { updateSetpoint, deleteSetpoint } from "./setpoints";
 
 const resolvers = {
   Query: {
@@ -45,6 +45,7 @@ const resolvers = {
     updateOffset,
     updateRGBLights,
     updateSetpoint,
+    deleteSetpoint,
   },
 };
 

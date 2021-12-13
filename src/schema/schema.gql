@@ -21,6 +21,7 @@ type Mutation {
   updateOffset(input: offsetsInput): Sensor
   updateRGBLights(input: RGBLightInput): RGBLight
   updateSetpoint(input: SetpointInput): Setpoint
+  deleteSetpoint(input: SetpointInput): Setpoint
 }
 
 ##########################################
@@ -46,7 +47,7 @@ input PlugInput {
 input SetpointInput {
   room: String
   time: String
-  temp: Float
+  temp: String
 }
 
 ##########################################
