@@ -1,4 +1,4 @@
-import { radiatorStore, sensorStore, plugStore, setpointsStore, valveStore } from "../database";
+import { radiatorStore, sensorStore, plugStore, setpointsStore, valveStore, rgbLightStore } from "../database";
 import { updatePlug, updateRGBLights } from "./controllers";
 import updateOffset from "./setpoints/offsets";
 import { updateSetpoint, deleteSetpoint } from "./setpoints";
@@ -17,18 +17,26 @@ const resolvers = {
       return await plugStore.findOne({ name });
     },
 
+    // RGB Lights
+    getRGBLights: async () => {
+      return await rgbLightStore.find().toArray();
+    },
+    getRGBLight: async (_: any, { name }) => {
+      return await rgbLightStore.findOne({ name });
+    },
+
     // Sensors
-    getAllSensors: async () => {
+    getSensors: async () => {
       return await sensorStore.find().toArray();
     },
     getSensor: async (_: any, { room }) => {
       return await sensorStore.findOne({ room: room });
     },
 
-    getAllSetpoints: async () => {
+    getSetpoints: async () => {
       return await setpointsStore.find().toArray();
     },
-    getSetpoints: async (_: any, { room }) => {
+    getSetpoint: async (_: any, { room }) => {
       return await setpointsStore.findOne({ room: room });
     },
 

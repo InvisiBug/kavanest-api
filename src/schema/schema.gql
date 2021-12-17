@@ -3,17 +3,20 @@
 type Query {
   getRadiator: Radiator
 
-  getAllSensors: [Sensor]
+  getSensors: [Sensor]
   getSensor(room: String): Sensor
 
   getPlugs: [Plug]
   getPlug(name: String): Plug
 
+  getRGBLights: [RGBLight]
+  getRGBLight(room: String): RGBLight
+
   getValves: [Valve]
   getValve(room: String): Valve
 
-  getAllSetpoints: [Setpoint]
-  getSetpoints(room: String): Setpoint
+  getSetpoints: [Setpoint]
+  getSetpoint(room: String): Setpoint
 }
 
 type Mutation {
@@ -55,6 +58,15 @@ input SetpointInput {
 type Setpoint {
   room: String
   setpoints: Setpoints
+}
+
+type RGBLight {
+  name: String
+  connected: Boolean
+  red: Int
+  green: Int
+  blue: Int
+  mode: Int
 }
 
 scalar Setpoints

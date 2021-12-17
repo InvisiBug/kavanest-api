@@ -24,8 +24,15 @@ export default async (_: any, { input: { name, red, green, blue, mode } }: Args)
       return screenLEDs.value;
 
     case "tableLamp":
-      updateRGB("Table Lamp Control", { red, green, blue });
-      return await rgbLightStore.findOneAndUpdate({ name: name }, { $set: { red, green, blue } }, options);
+      if (mode != undefined) {
+        updateMode("Table Lamp Control", mode);
+        const tableLampMode = await rgbLightStore.findOneAndUpdate({ name: name }, { $set: { mode } }, options);
+        return tableLampMode.value;
+      } else {
+        updateRGB("Table Lamp Control", { red, green, blue });
+        const tabeLamp = await rgbLightStore.findOneAndUpdate({ name: name }, { $set: { red, green, blue } }, options);
+        return tabeLamp.value;
+      }
   }
 };
 
