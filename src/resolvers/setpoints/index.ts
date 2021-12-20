@@ -8,23 +8,28 @@ export const updateSetpoint = async (_: any, { input: { room, time, temp } }: Ar
     return response.value;
   }
 
-  // TODO, Figure how to add this ordering to the get all setpoints request
-  const ordered: any = Object.keys(currentRoom.setpoints)
-    .sort()
-    .reduce((obj, key) => {
-      obj[key] = currentRoom.setpoints[key];
-      return obj;
-    }, {});
-
-  console.log(ordered);
-
-  const updatedSetpoints = {
-    ...ordered,
+  const newSetpoints = {
+    ...currentRoom.setpoints,
     [time]: temp,
   };
 
-  const response = await setpointsStore.findOneAndUpdate({ room }, { $set: { setpoints: updatedSetpoints } }, options);
-  return response.value;
+  const newOrder: any = Object.keys(newSetpoints)
+    .sort()
+    .reduce((obj, key) => {
+      obj[key] = newSetpoints[key];
+      return obj;
+    }, {});
+
+  return await setpointsStore.findOneAndUpdate({ room }, { $set: { setpoints: newOrder } }, options);
+};
+
+export const deleteSetpoint = async (_: any, { input: { room, time } }: Args) => {
+  const currentRoom = await setpointsStore.findOne({ room });
+  const setpoints = currentRoom.setpoints;
+
+  delete setpoints[time];
+
+  return await setpointsStore.findOneAndUpdate({ room }, { $set: { setpoints } }, options);
 };
 
 export interface Args {
