@@ -5,10 +5,6 @@ import { updateSetpoint, deleteSetpoint } from "./setpoints";
 
 const resolvers = {
   Query: {
-    getRadiator: async () => {
-      return await radiatorStore.findOne({ room: "ourRoom" });
-    },
-
     // Plugs
     getPlugs: async () => {
       return await plugStore.find().toArray();

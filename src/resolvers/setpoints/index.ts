@@ -1,5 +1,10 @@
 import { setpointsStore, options } from "../../database";
 
+/*
+  Look for a some current setpoints
+    If there isnt one, create a new one and save incoming values
+    If there is one, grab it, add the new setpoint, sort the resulting array in time order, return the time ordered array
+*/
 export const updateSetpoint = async (_: any, { input: { room, time, temp } }: Args) => {
   const currentRoom = await setpointsStore.findOne({ room });
 
@@ -23,6 +28,11 @@ export const updateSetpoint = async (_: any, { input: { room, time, temp } }: Ar
   return await setpointsStore.findOneAndUpdate({ room }, { $set: { setpoints: newOrder } }, options);
 };
 
+/*
+  Grab the setpoints for the required room
+  Delete the stated setpoint
+  Save the new setpoints
+*/
 export const deleteSetpoint = async (_: any, { input: { room, time } }: Args) => {
   const currentRoom = await setpointsStore.findOne({ room });
   const setpoints = currentRoom.setpoints;
