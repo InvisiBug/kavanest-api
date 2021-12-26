@@ -17,6 +17,9 @@ deployment:
     - name: MQTT_LIVE
       value: mqtt://192.168.1.46
 
+    - name: NODE_ENV
+      value: production
+
 ingress:
   - name: api.kavanet.io
     selector: kavanest-api
