@@ -19,8 +19,12 @@ type Query {
 
 type Mutation {
   updatePlug(input: PlugInput): Plug
+
   updateOffset(input: offsetsInput): Sensor
+
   updateRGBLights(input: RGBLightInput): RGBLight
+
+  updateDeadzone(input: DeadzoneInput): Setpoint
   updateSetpoint(input: SetpointInput): Setpoint
   deleteSetpoint(input: SetpointInput): Setpoint
 }
@@ -50,6 +54,7 @@ input SetpointInput {
   day: String
   time: String
   temp: String
+  deadZone: String
 }
 
 input days {
@@ -57,11 +62,17 @@ input days {
   weekend: Boolean
 }
 
+input DeadzoneInput {
+  room: String
+  deadzone: String
+}
+
 ##########################################
 #* Data
 type Setpoint {
   room: String
   setpoints: Setpoints
+  deadzone: String
 }
 
 type Setpoints {
