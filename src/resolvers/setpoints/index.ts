@@ -5,19 +5,36 @@ import { setpointsStore, options } from "../../database";
     If there isnt one, create a new one and save incoming values
     If there is one, grab it, add the new setpoint, sort the resulting array in time order, return the time ordered array
 */
-export const updateSetpoint = async (_: any, { input: { room, time, temp } }: Args) => {
-  const currentRoom = await setpointsStore.findOne({ room });
+export const updateSetpoint = async (_: any, { input: { room, day, time, temp } }: Args) => {
+  // Look for an existing entry
+  const currentRoom = await setpointsStore.findOne({ room: room });
 
+  // Create new entry if one doesnt exist, and return it
   if (!currentRoom) {
-    const response = await setpointsStore.findOneAndUpdate({ room }, { $set: { setpoints: { [time]: temp } } }, options);
+    const response = await setpointsStore.findOneAndUpdate(
+      { room },
+      {
+        $set: {
+          setpoints: {
+            [day]: {
+              [time]: temp,
+            },
+          },
+        },
+      },
+      options
+    );
+
     return response.value;
   }
 
+  // Create an object of all the setpoints, with the new one on the end
   const newSetpoints = {
-    ...currentRoom.setpoints,
+    ...currentRoom.setpoints[day],
     [time]: temp,
   };
 
+  // Order the new setpoints by time
   const newOrder: any = Object.keys(newSetpoints)
     .sort()
     .reduce((obj, key) => {
@@ -25,7 +42,15 @@ export const updateSetpoint = async (_: any, { input: { room, time, temp } }: Ar
       return obj;
     }, {});
 
-  return await setpointsStore.findOneAndUpdate({ room }, { $set: { setpoints: newOrder } }, options);
+  // Add the new ordered setpoints to a clone of the original setpoints object
+  const updatedSetpoints = {
+    ...currentRoom.setpoints,
+    [day]: newOrder,
+  };
+
+  // Save the new setpoints object
+  const data = await setpointsStore.findOneAndUpdate({ room }, { $set: { setpoints: updatedSetpoints } }, options);
+  return data.value;
 };
 
 /*
@@ -33,18 +58,20 @@ export const updateSetpoint = async (_: any, { input: { room, time, temp } }: Ar
   Delete the stated setpoint
   Save the new setpoints
 */
-export const deleteSetpoint = async (_: any, { input: { room, time } }: Args) => {
+export const deleteSetpoint = async (_: any, { input: { room, day, time } }: Args) => {
   const currentRoom = await setpointsStore.findOne({ room });
   const setpoints = currentRoom.setpoints;
 
-  delete setpoints[time];
+  delete setpoints[day][time];
 
-  return await setpointsStore.findOneAndUpdate({ room }, { $set: { setpoints } }, options);
+  const data = await setpointsStore.findOneAndUpdate({ room }, { $set: { setpoints } }, options);
+  return data.value;
 };
 
 export interface Args {
   input: {
-    room: String;
+    room: string;
+    day: string;
     time: string;
     temp: number;
   };

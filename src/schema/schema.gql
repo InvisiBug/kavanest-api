@@ -47,8 +47,14 @@ input PlugInput {
 
 input SetpointInput {
   room: String
+  day: String
   time: String
   temp: String
+}
+
+input days {
+  weekday: Boolean
+  weekend: Boolean
 }
 
 ##########################################
@@ -58,7 +64,12 @@ type Setpoint {
   setpoints: Setpoints
 }
 
-scalar Setpoints
+type Setpoints {
+  weekend: entry
+  weekday: entry
+}
+
+scalar entry
 {
   time: String
   temp: Float

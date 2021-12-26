@@ -2,6 +2,9 @@
 // https://mongodb.github.io/node-mongodb-native/3.6/api/Collection.html#findOneAndUpdate
 
 import Mongo from "./mongo";
+import { mongoUrl } from "../helpers";
+
+console.log("🔗 Connecting to ", mongoUrl, "\n🔗 successful database connections made to the following");
 
 export const rgbLightStore = new Mongo("devices", "rgbLights").collection;
 export const radiatorStore = new Mongo("devices", "radiators").collection;

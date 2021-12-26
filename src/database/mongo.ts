@@ -16,7 +16,7 @@ export default class Mongo {
     (async () => {
       this.client.connect((err) => {
         if (!err) {
-          console.log("🔗 Connection made to", mongoUrl, collection);
+          console.log("\t 📜", collection);
         }
       });
     })();
