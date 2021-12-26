@@ -1,6 +1,7 @@
 import { radiatorStore, sensorStore, plugStore, setpointsStore, valveStore, rgbLightStore } from "../database";
 import { updatePlug, updateRGBLights } from "./controllers";
 import updateOffset from "./setpoints/offsets";
+import updateDeadzone from "./setpoints/deadzones";
 import { updateSetpoint, deleteSetpoint } from "./setpoints";
 
 const resolvers = {
@@ -48,6 +49,8 @@ const resolvers = {
     updatePlug,
     updateOffset,
     updateRGBLights,
+
+    updateDeadzone,
     updateSetpoint,
     deleteSetpoint,
   },
