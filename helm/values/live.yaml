@@ -8,13 +8,10 @@ deployment:
     ports:
     - port: 4000
     env:
-    - name: ENVIRONMENT
-      value: live
-
-    - name: MONGO_LIVE
+    - name: MONGO
       value: mongodb://kavanest-mongo:27017
 
-    - name: MQTT_LIVE
+    - name: MQTT
       value: mqtt://192.168.1.46
 
     - name: NODE_ENV
