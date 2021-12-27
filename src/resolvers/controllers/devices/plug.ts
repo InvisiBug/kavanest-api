@@ -26,6 +26,11 @@ export default async (_: any, { input: { name, state } }: Args) => {
       toggle(state, "Radiator Fan Control", "1", "0");
       const radiatorFan = await plugStore.findOneAndUpdate({ name: name }, { $set: { state: state } }, options);
       return radiatorFan.value;
+
+    case "computerPower":
+      toggle(state, "Computer Power Control", "1", "0");
+      const computerPower = await plugStore.findOneAndUpdate({ name: name }, { $set: { state: state } }, options);
+      return computerPower.value;
   }
 };
 

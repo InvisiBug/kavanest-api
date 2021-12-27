@@ -1,8 +1,6 @@
 ##########################################
 #* Queries & Mutations
 type Query {
-  getRadiator: Radiator
-
   getSensors: [Sensor]
   getSensor(room: String): Sensor
 
@@ -21,8 +19,12 @@ type Query {
 
 type Mutation {
   updatePlug(input: PlugInput): Plug
+
   updateOffset(input: offsetsInput): Sensor
+
   updateRGBLights(input: RGBLightInput): RGBLight
+
+  updateDeadzone(input: DeadzoneInput): Setpoint
   updateSetpoint(input: SetpointInput): Setpoint
   deleteSetpoint(input: SetpointInput): Setpoint
 }
@@ -49,8 +51,20 @@ input PlugInput {
 
 input SetpointInput {
   room: String
+  day: String
   time: String
   temp: String
+  deadZone: String
+}
+
+input days {
+  weekday: Boolean
+  weekend: Boolean
+}
+
+input DeadzoneInput {
+  room: String
+  deadzone: String
 }
 
 ##########################################
@@ -58,18 +72,15 @@ input SetpointInput {
 type Setpoint {
   room: String
   setpoints: Setpoints
+  deadzone: String
 }
 
-type RGBLight {
-  name: String
-  connected: Boolean
-  red: Int
-  green: Int
-  blue: Int
-  mode: Int
+type Setpoints {
+  weekend: entry
+  weekday: entry
 }
 
-scalar Setpoints
+scalar entry
 {
   time: String
   temp: Float
@@ -82,6 +93,7 @@ type Sensor {
   humidity: Float
   offset: Float
   connected: Boolean
+  _id: ID
 }
 
 type Valve {
@@ -89,6 +101,7 @@ type Valve {
   state: Boolean
   demand: Boolean
   connected: Boolean
+  _id: ID
 }
 
 type RGBLight {
@@ -98,16 +111,22 @@ type RGBLight {
   blue: Int
   mode: Int
   connected: Boolean
+  _id: ID
 }
 
 type Plug {
   name: String
   state: Boolean
   connected: Boolean
+  _id: ID
 }
 
-type Radiator {
-  room: String
-  inlet: Float
-  outlet: Float
+type RGBLight {
+  name: String
+  connected: Boolean
+  red: Int
+  green: Int
+  blue: Int
+  mode: Int
+  _id: ID
 }

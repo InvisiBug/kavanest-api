@@ -1,14 +1,11 @@
 import { radiatorStore, sensorStore, plugStore, setpointsStore, valveStore, rgbLightStore } from "../database";
 import { updatePlug, updateRGBLights } from "./controllers";
 import updateOffset from "./setpoints/offsets";
+import updateDeadzone from "./setpoints/deadzones";
 import { updateSetpoint, deleteSetpoint } from "./setpoints";
 
 const resolvers = {
   Query: {
-    getRadiator: async () => {
-      return await radiatorStore.findOne({ room: "ourRoom" });
-    },
-
     // Plugs
     getPlugs: async () => {
       return await plugStore.find().toArray();
@@ -52,6 +49,8 @@ const resolvers = {
     updatePlug,
     updateOffset,
     updateRGBLights,
+
+    updateDeadzone,
     updateSetpoint,
     deleteSetpoint,
   },

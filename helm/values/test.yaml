@@ -8,13 +8,9 @@ deployment:
     ports:
     - port: 4000
     env:
-    - name: ENVIRONMENT
-      value: test
-
-    - name: MONGO_TEST
+    - name: MONGO
       value: mongodb://kavanest-test-mongo:27017
-
-    - name: MQTT_TEST
+    - name: MQTT
       value: mqtt://kavanest-simulator
 
 ingress:
