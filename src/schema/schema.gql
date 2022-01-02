@@ -15,6 +15,8 @@ type Query {
 
   getSetpoints: [Setpoint]
   getSetpoint(room: String): Setpoint
+
+  getComputerAudio: ComputerAudio
 }
 
 type Mutation {
@@ -27,6 +29,8 @@ type Mutation {
   updateDeadzone(input: DeadzoneInput): Setpoint
   updateSetpoint(input: SetpointInput): Setpoint
   deleteSetpoint(input: SetpointInput): Setpoint
+
+  updateComputerAudio(input: ComputerAudioInput): ComputerAudio
 }
 
 ##########################################
@@ -34,6 +38,14 @@ type Mutation {
 input offsetsInput {
   room: String
   offset: Float
+}
+
+input ComputerAudioInput {
+  master: Boolean
+  left: Boolean
+  right: Boolean
+  sub: Boolean
+  mixer: Boolean
 }
 
 input RGBLightInput {
@@ -104,16 +116,6 @@ type Valve {
   _id: ID
 }
 
-type RGBLight {
-  name: String
-  red: Int
-  green: Int
-  blue: Int
-  mode: Int
-  connected: Boolean
-  _id: ID
-}
-
 type Plug {
   name: String
   state: Boolean
@@ -128,5 +130,15 @@ type RGBLight {
   green: Int
   blue: Int
   mode: Int
+  _id: ID
+}
+
+type ComputerAudio {
+  name: String
+  left: Boolean
+  right: Boolean
+  sub: Boolean
+  mixer: Boolean
+  connected: Boolean
   _id: ID
 }
