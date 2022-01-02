@@ -1,5 +1,5 @@
-import { radiatorStore, sensorStore, plugStore, setpointsStore, valveStore, rgbLightStore } from "../database";
-import { updatePlug, updateRGBLights } from "./controllers";
+import { sensorStore, plugStore, setpointsStore, valveStore, rgbLightStore, specialsStore } from "../database";
+import { updatePlug, updateRGBLights, updateComputerAudio } from "./controllers";
 import updateOffset from "./setpoints/offsets";
 import updateDeadzone from "./setpoints/deadzones";
 import { updateSetpoint, deleteSetpoint } from "./setpoints";
@@ -44,6 +44,18 @@ const resolvers = {
     getValve: async (_: any, { room }) => {
       return await valveStore.findOne({ room });
     },
+
+    // Computer Audio
+    getComputerAudio: async () => {
+      const specials = await specialsStore.find().toArray();
+      let response: any;
+      for (let key in specials) {
+        if (specials[key].name == "computerAudio") {
+          response = specials[key];
+        }
+      }
+      return response;
+    },
   },
   Mutation: {
     updatePlug,
@@ -53,6 +65,8 @@ const resolvers = {
     updateDeadzone,
     updateSetpoint,
     deleteSetpoint,
+
+    updateComputerAudio,
   },
 };
 
