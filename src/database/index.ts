@@ -15,6 +15,8 @@ export const plugStore = new Mongo("devices", "plugs").collection;
 
 export const setpointsStore = new Mongo("heatingController", "setpoints").collection;
 
+export const specialsStore = new Mongo("devices", "specials").collection;
+
 export const options: Options = { returnDocument: "after", upsert: true };
 
 export interface Options {
