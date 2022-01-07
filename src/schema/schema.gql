@@ -17,6 +17,12 @@ type Query {
   getSetpoint(room: String): Setpoint
 
   getComputerAudio: ComputerAudio
+
+  getRooms: [Room]
+  getRoom(room: String): Room
+
+  getTimers: [Timer]
+  getTimer(timer: String): Timer
 }
 
 type Mutation {
@@ -31,10 +37,23 @@ type Mutation {
   deleteSetpoint(input: SetpointInput): Setpoint
 
   updateComputerAudio(input: ComputerAudioInput): ComputerAudio
+
+  updateValve(input: ValveInput): Valve
+  updateRoom(input: RoomInput): Room
 }
 
 ##########################################
 #* Inputs
+input ValveInput {
+  name: String
+  state: Boolean
+}
+
+input RoomInput {
+  name: String
+  state: Boolean
+}
+
 input offsetsInput {
   room: String
   offset: Float
@@ -79,12 +98,27 @@ input DeadzoneInput {
   deadzone: String
 }
 
+input TimerInput {
+  timer: String
+  value: Int
+}
+
 ##########################################
 #* Data
 type Setpoint {
   room: String
   setpoints: Setpoints
   deadzone: String
+}
+
+type Timer {
+  timer: String
+  value: Int
+}
+
+type Room {
+  room: String
+  demand: Boolean
 }
 
 type Setpoints {

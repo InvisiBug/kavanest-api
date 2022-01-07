@@ -1,4 +1,4 @@
-import { setpointsStore, options } from "../../database";
+import { setpointsStore, options } from "../../../database";
 
 /*
   Look for a some current setpoints
