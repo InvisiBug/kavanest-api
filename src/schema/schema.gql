@@ -102,7 +102,7 @@ input DeadzoneInput {
 
 input TimerInput {
   timer: String
-  value: Int
+  value: Float
 }
 
 ##########################################
@@ -115,7 +115,7 @@ type Setpoint {
 
 type Timer {
   timer: String
-  value: Int
+  value: Float
 }
 
 type Room {
