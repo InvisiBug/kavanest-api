@@ -40,6 +40,8 @@ type Mutation {
 
   updateValve(input: ValveInput): Valve
   updateRoom(input: RoomInput): Room
+
+  updateTimer(input: TimerInput): Timer
 }
 
 ##########################################

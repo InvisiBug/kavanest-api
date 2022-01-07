@@ -1,5 +1,5 @@
-import { sensorStore, plugStore, setpointsStore, valveStore, rgbLightStore, specialsStore, roomStore } from "../database";
-import { updatePlug, updateRGBLights, updateComputerAudio, updateValve, updateRoom } from "./mutations/controllers";
+import { sensorStore, plugStore, setpointsStore, valveStore, rgbLightStore, specialsStore, roomStore, timerStore } from "../database";
+import { updatePlug, updateRGBLights, updateComputerAudio, updateValve, updateRoom, updateTimer } from "./mutations/controllers";
 import updateOffset from "./mutations/setpoints/offsets";
 import updateDeadzone from "./mutations/setpoints/deadzones";
 import { updateSetpoint, deleteSetpoint } from "./mutations/setpoints/";
@@ -64,6 +64,14 @@ const resolvers = {
     getRoom: async (_: any, { room }) => {
       return await roomStore.findOne({ room });
     },
+
+    // Timerrs
+    getTimers: async () => {
+      return await timerStore.find().toArray();
+    },
+    getTimer: async (_: any, { room }) => {
+      return await timerStore.findOne({ room });
+    },
   },
   Mutation: {
     updatePlug,
@@ -78,6 +86,8 @@ const resolvers = {
 
     updateValve,
     updateRoom,
+
+    updateTimer,
   },
 };
 
