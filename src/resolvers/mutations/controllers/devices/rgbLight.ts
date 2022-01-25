@@ -1,7 +1,6 @@
-import { rgbLightStore, options } from "../../../database";
+import { rgbLightStore, options } from "../../../../database";
 import mqtt from "mqtt";
-import { mqttUrl } from "../../../helpers";
-require("dotenv").config();
+import { mqttUrl } from "../../../../helpers";
 
 let client: mqtt.MqttClient = mqtt.connect(mqttUrl);
 
