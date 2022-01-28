@@ -6,11 +6,13 @@ import { setpointsStore, options } from "../../../database";
     If there is one, grab it, add the new setpoint, sort the resulting array in time order, return the time ordered array
 */
 export const updateSetpoint = async (_: any, { input: { room, day, time, temp } }: Args) => {
+  console.log(room, day, time, temp);
   // Look for an existing entry
   const currentRoom = await setpointsStore.findOne({ room: room });
 
-  // Create new entry if one doesnt exist, and return it
-  if (!currentRoom) {
+  // does the existing entry have any setpoints
+  // If not, create some and return them
+  if (!currentRoom.setpoints) {
     const response = await setpointsStore.findOneAndUpdate(
       { room },
       {
@@ -50,6 +52,7 @@ export const updateSetpoint = async (_: any, { input: { room, day, time, temp } 
 
   // Save the new setpoints object
   const data = await setpointsStore.findOneAndUpdate({ room }, { $set: { setpoints: updatedSetpoints } }, options);
+  console.log(data.value);
   return data.value;
 };
 
