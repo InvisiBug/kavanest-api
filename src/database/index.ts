@@ -13,6 +13,7 @@ export const offsetStore = new Mongo("devices", "offsets").collection;
 export const sensorStore = new Mongo("devices", "sensors").collection;
 export const valveStore = new Mongo("devices", "valves").collection;
 export const plugStore = new Mongo("devices", "plugs").collection;
+export const rasiatorStore = new Mongo("devices", "radiators").collection;
 
 // Heating Controller
 export const setpointsStore = new Mongo("heatingController", "setpoints").collection;

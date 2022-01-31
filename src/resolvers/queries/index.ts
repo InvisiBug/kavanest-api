@@ -1,4 +1,14 @@
-import { sensorStore, plugStore, setpointsStore, valveStore, rgbLightStore, specialsStore, roomStore, timerStore } from "../../database";
+import {
+  sensorStore,
+  plugStore,
+  setpointsStore,
+  valveStore,
+  rgbLightStore,
+  specialsStore,
+  roomStore,
+  timerStore,
+  radiatorStore,
+} from "../../database";
 
 // Plugs
 export const getPlugs = async () => {
@@ -59,10 +69,14 @@ export const getRoom = async (_: any, { room }) => {
   return await roomStore.findOne({ room });
 };
 
-// Timerrs
+// Timers
 export const getTimers = async () => {
   return await timerStore.find().toArray();
 };
 export const getTimer = async (_: any, { room }) => {
   return await timerStore.findOne({ room });
+};
+
+export const getRadiator = async (_: any, { room }) => {
+  return await radiatorStore.findOne({ room });
 };

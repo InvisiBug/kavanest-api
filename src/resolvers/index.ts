@@ -15,6 +15,7 @@ import {
   getRoom,
   getTimers,
   getTimer,
+  getRadiator,
 } from "./queries";
 import updateOffset from "./mutations/setpoints/offsets";
 import updateDeadzone from "./mutations/setpoints/deadzones";
@@ -44,6 +45,8 @@ const resolvers = {
 
     getTimers,
     getTimer,
+
+    getRadiator,
   },
   Mutation: {
     updatePlug,
