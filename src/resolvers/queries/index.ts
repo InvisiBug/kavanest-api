@@ -73,8 +73,8 @@ export const getRoom = async (_: any, { room }) => {
 export const getTimers = async () => {
   return await timerStore.find().toArray();
 };
-export const getTimer = async (_: any, { room }) => {
-  return await timerStore.findOne({ room });
+export const getTimer = async (_: any, { timer }) => {
+  return await timerStore.findOne({ timer });
 };
 
 export const getRadiator = async (_: any, { room }) => {
