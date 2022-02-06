@@ -23,6 +23,8 @@ type Query {
 
   getTimers: [Timer]
   getTimer(timer: String): Timer
+
+  getRadiator(room: String): Radiator
 }
 
 type Mutation {
@@ -53,7 +55,9 @@ input ValveInput {
 
 input RoomInput {
   name: String
-  state: Boolean
+  disabled: Boolean
+  overrideTime: Int
+  demand: Boolean
 }
 
 input offsetsInput {
@@ -107,6 +111,11 @@ input TimerInput {
 
 ##########################################
 #* Data
+type Radiator {
+  inlet: Float
+  outlet: Float
+}
+
 type Setpoint {
   room: String
   setpoints: Setpoints
@@ -121,6 +130,8 @@ type Timer {
 type Room {
   room: String
   demand: Boolean
+  overrideTime: Float
+  disabled: Boolean
 }
 
 type Setpoints {
@@ -147,7 +158,6 @@ type Sensor {
 type Valve {
   room: String
   state: Boolean
-  demand: Boolean
   connected: Boolean
   _id: ID
 }

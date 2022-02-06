@@ -1,7 +1,7 @@
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import { ApolloServer } from "apollo-server";
 import { readFileSync } from "fs";
-import resolvers from "./resolvers";
+import { resolvers } from "./resolvers";
 import { log } from "./helpers";
 import path from "path";
 
