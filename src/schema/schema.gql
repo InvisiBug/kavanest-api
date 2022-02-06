@@ -55,7 +55,9 @@ input ValveInput {
 
 input RoomInput {
   name: String
-  state: Boolean
+  disabled: Boolean
+  overrideTime: Int
+  demand: Boolean
 }
 
 input offsetsInput {
@@ -128,6 +130,8 @@ type Timer {
 type Room {
   room: String
   demand: Boolean
+  overrideTime: Float
+  disabled: Boolean
 }
 
 type Setpoints {
