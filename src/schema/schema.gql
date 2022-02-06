@@ -105,7 +105,7 @@ input DeadzoneInput {
 }
 
 input TimerInput {
-  timer: String
+  name: String
   value: Float
 }
 
@@ -123,12 +123,12 @@ type Setpoint {
 }
 
 type Timer {
-  timer: String
+  name: String
   value: Float
 }
 
 type Room {
-  room: String
+  name: String
   demand: Boolean
   overrideTime: Float
   disabled: Boolean
