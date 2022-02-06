@@ -28,7 +28,11 @@ export const getRGBLight = async (_: any, { name }) => {
 
 // Sensors
 export const getSensors = async () => {
-  return await sensorStore.find().toArray();
+  const data = await sensorStore.find().toArray();
+
+  data.sort((a, b) => (a.sort > b.sort ? 1 : -1));
+
+  return data;
 };
 export const getSensor = async (_: any, { room }) => {
   return await sensorStore.findOne({ room: room });
@@ -43,7 +47,10 @@ export const getSetpoint = async (_: any, { room }) => {
 
 // Valves
 export const getValves = async () => {
-  return await valveStore.find().toArray();
+  const data = await valveStore.find().toArray();
+
+  data.sort((a, b) => (a.sort > b.sort ? 1 : -1));
+  return data;
 };
 export const getValve = async (_: any, { room }) => {
   return await valveStore.findOne({ room });
