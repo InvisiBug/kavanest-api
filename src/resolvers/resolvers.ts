@@ -19,7 +19,7 @@ import {
 } from "./queries";
 import updateOffset from "./mutations/setpoints/offsets";
 import updateDeadzone from "./mutations/setpoints/deadzones";
-import { updateSetpoint, deleteSetpoint } from "./mutations/setpoints/";
+import { deleteSetpoint } from "./mutations/setpoints/";
 
 export const resolvers = {
   Query: {

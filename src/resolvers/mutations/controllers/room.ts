@@ -1,4 +1,3 @@
-import e from "express";
 import { options, roomStore } from "../../../database";
 import { offsetTimeMins } from "../../../helpers";
 
@@ -33,10 +32,13 @@ export default async (_: any, { input }: any) => {
 };
 
 const handleSetpoints = async (name: string, day: string, time: string, temp: string) => {
+  // Look for an existing entry
   const currentRoom = await roomStore.findOne({ name });
 
   let updatedSetpoints: any;
 
+  // does the existing room have any setpoints
+  // If not, create one and return it
   if (!currentRoom.setpoints) {
     const newSetpoints = {
       [day]: {
@@ -45,12 +47,14 @@ const handleSetpoints = async (name: string, day: string, time: string, temp: st
     };
     return newSetpoints;
   } else {
+    // Create an object of all the setpoints, with the new one on the end
     updatedSetpoints = {
       ...currentRoom.setpoints[day],
       [time]: temp,
     };
   }
 
+  // Order the new setpoints by time
   const newOrder: any = Object.keys(updatedSetpoints)
     .sort()
     .reduce((obj, key) => {
@@ -58,15 +62,14 @@ const handleSetpoints = async (name: string, day: string, time: string, temp: st
       return obj;
     }, {});
 
-  // // Add the new ordered setpoints to a clone of the original setpoints object
+  // Add the new ordered setpoints to a clone of the original setpoints object
   updatedSetpoints = {
     ...currentRoom.setpoints,
     [day]: newOrder,
   };
 
+  // Return the new setpoints object
   return updatedSetpoints;
-
-  // console.log(updatedSetpoints);
 };
 
 export interface Args {
