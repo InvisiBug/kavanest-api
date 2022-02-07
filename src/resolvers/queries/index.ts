@@ -72,8 +72,10 @@ export const getComputerAudio = async () => {
 export const getRooms = async () => {
   return await roomStore.find().toArray();
 };
-export const getRoom = async (_: any, { room }) => {
-  return await roomStore.findOne({ room });
+export const getRoom = async (_: any, { name }) => {
+  const data = await roomStore.findOne({ name });
+  console.log(data);
+  return data;
 };
 
 // Timers

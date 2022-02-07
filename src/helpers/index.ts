@@ -7,3 +7,8 @@ export const decamelize = (text: string) => {
   const finalResult = result.charAt(0).toUpperCase() + result.slice(1);
   return finalResult;
 };
+
+export const offsetTimeMins = (addedTime = 0) => {
+  let now = new Date();
+  return now.setMinutes(now.getMinutes() + addedTime);
+};
