@@ -74,7 +74,6 @@ export const getRooms = async () => {
 };
 export const getRoom = async (_: any, { name }) => {
   const data = await roomStore.findOne({ name });
-  console.log(data);
   return data;
 };
 

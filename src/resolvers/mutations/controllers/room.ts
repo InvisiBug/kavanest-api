@@ -28,8 +28,6 @@ export default async (_: any, { input }: any) => {
     ...(updatedSetpoints != undefined && { setpoints: updatedSetpoints }),
   };
 
-  // console.log(name, updatedRoom);
-
   const data = await roomStore.findOneAndUpdate({ name }, { $set: updatedRoom }, options);
   return data.value;
 };
@@ -40,7 +38,6 @@ const handleSetpoints = async (name: string, day: string, time: string, temp: st
   let updatedSetpoints: any;
 
   if (!currentRoom.setpoints) {
-    console.log("no setpoints found");
     const newSetpoints = {
       [day]: {
         [time]: temp,
@@ -48,7 +45,6 @@ const handleSetpoints = async (name: string, day: string, time: string, temp: st
     };
     return newSetpoints;
   } else {
-    console.log("Setpoints found");
     updatedSetpoints = {
       ...currentRoom.setpoints[day],
       [time]: temp,
@@ -68,7 +64,6 @@ const handleSetpoints = async (name: string, day: string, time: string, temp: st
     [day]: newOrder,
   };
 
-  console.log(updatedSetpoints);
   return updatedSetpoints;
 
   // console.log(updatedSetpoints);

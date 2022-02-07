@@ -1,4 +1,4 @@
-import { setpointsStore, options } from "../../../database";
+import { setpointsStore, options, roomStore } from "../../../database";
 
 /*
   Look for a some current setpoints
@@ -60,13 +60,13 @@ export const updateSetpoint = async (_: any, { input: { room, day, time, temp } 
   Delete the stated setpoint
   Save the new setpoints
 */
-export const deleteSetpoint = async (_: any, { input: { room, day, time } }: Args) => {
-  const currentRoom = await setpointsStore.findOne({ room });
-  const setpoints = currentRoom.setpoints;
+export const deleteSetpoint = async (_: any, { input: { name, day, time } }: any) => {
+  const currentRoom = await roomStore.findOne({ name });
+  const setpoints = currentRoom?.setpoints;
 
   delete setpoints[day][time];
 
-  const data = await setpointsStore.findOneAndUpdate({ room }, { $set: { setpoints } }, options);
+  const data = await roomStore.findOneAndUpdate({ name }, { $set: { setpoints } }, options);
   return data.value;
 };
 

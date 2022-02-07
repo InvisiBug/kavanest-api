@@ -53,8 +53,6 @@ export const resolvers = {
     updateOffset,
     updateRGBLights,
 
-    updateDeadzone,
-    updateSetpoint,
     deleteSetpoint,
 
     updateComputerAudio,

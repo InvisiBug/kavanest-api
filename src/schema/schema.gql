@@ -34,14 +34,12 @@ type Mutation {
 
   updateRGBLights(input: RGBLightInput): RGBLight
 
-  updateDeadzone(input: DeadzoneInput): Setpoint
-  updateSetpoint(input: SetpointInput): Setpoint
-  deleteSetpoint(input: SetpointInput): Setpoint
-
   updateComputerAudio(input: ComputerAudioInput): ComputerAudio
 
   updateValve(input: ValveInput): Valve
+
   updateRoom(input: RoomInput): Room
+  deleteSetpoint(input: DeleteSetpointInput): Room
 
   updateTimer(input: TimerInput): Timer
 }
@@ -68,8 +66,8 @@ input setpointsIn {
   temp: String
 }
 
-input SetpointInput {
-  room: String
+input DeleteSetpointInput {
+  name: String
   day: String
   time: String
   temp: String
