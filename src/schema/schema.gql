@@ -19,7 +19,7 @@ type Query {
   getComputerAudio: ComputerAudio
 
   getRooms: [Room]
-  getRoom(room: String): Room
+  getRoom(name: String): Room
 
   getTimers: [Timer]
   getTimer(timer: String): Timer
@@ -34,14 +34,12 @@ type Mutation {
 
   updateRGBLights(input: RGBLightInput): RGBLight
 
-  updateDeadzone(input: DeadzoneInput): Setpoint
-  updateSetpoint(input: SetpointInput): Setpoint
-  deleteSetpoint(input: SetpointInput): Setpoint
-
   updateComputerAudio(input: ComputerAudioInput): ComputerAudio
 
   updateValve(input: ValveInput): Valve
+
   updateRoom(input: RoomInput): Room
+  deleteSetpoint(input: DeleteSetpointInput): Room
 
   updateTimer(input: TimerInput): Timer
 }
@@ -58,6 +56,22 @@ input RoomInput {
   disabled: Boolean
   overrideTime: Int
   demand: Boolean
+  deadzone: String
+  setpoints: setpointsIn
+}
+
+input setpointsIn {
+  day: String
+  time: String
+  temp: String
+}
+
+input DeleteSetpointInput {
+  name: String
+  day: String
+  time: String
+  temp: String
+  deadZone: String
 }
 
 input offsetsInput {
@@ -86,14 +100,6 @@ input PlugInput {
   state: Boolean
 }
 
-input SetpointInput {
-  room: String
-  day: String
-  time: String
-  temp: String
-  deadZone: String
-}
-
 input days {
   weekday: Boolean
   weekend: Boolean
@@ -105,7 +111,7 @@ input DeadzoneInput {
 }
 
 input TimerInput {
-  timer: String
+  name: String
   value: Float
 }
 
@@ -123,15 +129,17 @@ type Setpoint {
 }
 
 type Timer {
-  timer: String
+  name: String
   value: Float
 }
 
 type Room {
-  room: String
+  name: String
   demand: Boolean
   overrideTime: Float
   disabled: Boolean
+  deadzone: String
+  setpoints: Setpoints
 }
 
 type Setpoints {
