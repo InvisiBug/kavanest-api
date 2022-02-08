@@ -1,15 +1,15 @@
 import { options, timerStore } from "../../../database";
 
 export default async (_: any, { input }: Args) => {
-  const { timer, value } = input;
+  const { name, value } = input;
 
-  const room = await timerStore.findOneAndUpdate({ timer }, { $set: { value: offsetTimeMins(value) } }, options);
-  return room.value;
+  const timers = await timerStore.findOneAndUpdate({ name }, { $set: { value: offsetTimeMins(value) } }, options);
+  return timers.value;
 };
 
 export interface Args {
   input: {
-    timer: string;
+    name: string;
     value: number;
   };
 }

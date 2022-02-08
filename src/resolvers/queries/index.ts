@@ -28,22 +28,22 @@ export const getRGBLight = async (_: any, { name }) => {
 
 // Sensors
 export const getSensors = async () => {
-  return await sensorStore.find().toArray();
+  const data = await sensorStore.find().toArray();
+
+  data.sort((a, b) => (a.sort > b.sort ? 1 : -1));
+
+  return data;
 };
 export const getSensor = async (_: any, { room }) => {
   return await sensorStore.findOne({ room: room });
 };
 
-export const getSetpoints = async () => {
-  return await setpointsStore.find().toArray();
-};
-export const getSetpoint = async (_: any, { room }) => {
-  return await setpointsStore.findOne({ room: room });
-};
-
 // Valves
 export const getValves = async () => {
-  return await valveStore.find().toArray();
+  const data = await valveStore.find().toArray();
+
+  data.sort((a, b) => (a.sort > b.sort ? 1 : -1));
+  return data;
 };
 export const getValve = async (_: any, { room }) => {
   return await valveStore.findOne({ room });
@@ -65,16 +65,17 @@ export const getComputerAudio = async () => {
 export const getRooms = async () => {
   return await roomStore.find().toArray();
 };
-export const getRoom = async (_: any, { room }) => {
-  return await roomStore.findOne({ room });
+export const getRoom = async (_: any, { name }) => {
+  const data = await roomStore.findOne({ name });
+  return data;
 };
 
 // Timers
 export const getTimers = async () => {
   return await timerStore.find().toArray();
 };
-export const getTimer = async (_: any, { timer }) => {
-  return await timerStore.findOne({ timer });
+export const getTimer = async (_: any, { name }) => {
+  return await timerStore.findOne({ name });
 };
 
 export const getRadiator = async (_: any, { room }) => {
