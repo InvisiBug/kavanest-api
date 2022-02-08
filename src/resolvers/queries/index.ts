@@ -38,13 +38,6 @@ export const getSensor = async (_: any, { room }) => {
   return await sensorStore.findOne({ room: room });
 };
 
-export const getSetpoints = async () => {
-  return await setpointsStore.find().toArray();
-};
-export const getSetpoint = async (_: any, { room }) => {
-  return await setpointsStore.findOne({ room: room });
-};
-
 // Valves
 export const getValves = async () => {
   const data = await valveStore.find().toArray();
@@ -81,8 +74,8 @@ export const getRoom = async (_: any, { name }) => {
 export const getTimers = async () => {
   return await timerStore.find().toArray();
 };
-export const getTimer = async (_: any, { timer }) => {
-  return await timerStore.findOne({ timer });
+export const getTimer = async (_: any, { name }) => {
+  return await timerStore.findOne({ name });
 };
 
 export const getRadiator = async (_: any, { room }) => {

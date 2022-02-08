@@ -6,8 +6,6 @@ import {
   getRGBLight,
   getSensors,
   getSensor,
-  getSetpoints,
-  getSetpoint,
   getValves,
   getValve,
   getComputerAudio,
@@ -31,9 +29,6 @@ export const resolvers = {
 
     getSensors,
     getSensor,
-
-    getSetpoints,
-    getSetpoint,
 
     getValves,
     getValve,
