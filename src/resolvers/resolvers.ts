@@ -1,13 +1,4 @@
-import {
-  updatePlug,
-  updateRGBLights,
-  updateComputerAudio,
-  updateValve,
-  updateRoom,
-  updateTimer,
-  updateOffset,
-  deleteSetpoint,
-} from "./mutations/controllers";
+import { updatePlug, updateRGBLights, updateComputerAudio, updateValve, updateRoom, updateTimer, updateOffset, deleteSetpoint } from "./mutations";
 import {
   getPlugs,
   getPlug,
