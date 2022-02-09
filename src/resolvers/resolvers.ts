@@ -1,4 +1,13 @@
-import { updatePlug, updateRGBLights, updateComputerAudio, updateValve, updateRoom, updateTimer } from "./mutations/controllers";
+import {
+  updatePlug,
+  updateRGBLights,
+  updateComputerAudio,
+  updateValve,
+  updateRoom,
+  updateTimer,
+  updateOffset,
+  deleteSetpoint,
+} from "./mutations/controllers";
 import {
   getPlugs,
   getPlug,
@@ -15,9 +24,6 @@ import {
   getTimer,
   getRadiator,
 } from "./queries";
-import updateOffset from "./mutations/setpoints/offsets";
-import updateDeadzone from "./mutations/setpoints/deadzones";
-import { deleteSetpoint } from "./mutations/setpoints/";
 
 export const resolvers = {
   Query: {
