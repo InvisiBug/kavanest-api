@@ -1,5 +1,5 @@
-import { options, roomStore } from "../../../database";
-import { offsetTimeMins } from "../../../helpers";
+import { options, roomStore } from "../../database";
+import { offsetTimeMins } from "../../helpers";
 
 export default async (_: any, { input }: any) => {
   const { name, demand, overrideTime, disabled, deadzone, setpoints } = input;

@@ -1,6 +1,6 @@
 import mqtt from "mqtt";
-import { specialsStore, options } from "../../../../database";
-import { mqttUrl } from "../../../../helpers";
+import { specialsStore, options } from "../../../database";
+import { mqttUrl } from "../../../helpers";
 
 let client: mqtt.MqttClient = mqtt.connect(mqttUrl);
 const topic: string = "Computer Audio Control";
