@@ -3,26 +3,27 @@ name: kavanest-test-api
 namespace: kavanest-test
 
 deployment:
-  - name: kavanest-api
+  - name: kavanest-test-api
     image: 192.168.1.61:5000/kavanest-api
     ports:
     - port: 4000
     env:
     - name: MONGO
       value: mongodb://kavanest-test-mongo:27017
+
     - name: MQTT
-      value: mqtt://kavanest-simulator
+      value: mqtt://kavanest-test-simulator
 
 ingress:
   - name: test.api.kavanet.io
-    selector: kavanest-api
+    selector: kavanest-test-api
     path: /
     port: 4000
     host: test.api.kavanet.io
 
 service:
   loadBalancer:
-    - name: kavanest-api
-      selector: kavanest-api
+    - name: kavanest-test-api
+      selector: kavanest-test-api
       port: 80
       containerPort: 4000

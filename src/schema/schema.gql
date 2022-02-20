@@ -13,10 +13,15 @@ type Query {
   getValves: [Valve]
   getValve(room: String): Valve
 
-  getSetpoints: [Setpoint]
-  getSetpoint(room: String): Setpoint
-
   getComputerAudio: ComputerAudio
+
+  getRooms: [Room]
+  getRoom(name: String): Room
+
+  getTimers: [Timer]
+  getTimer(name: String): Timer
+
+  getRadiator(room: String): Radiator
 }
 
 type Mutation {
@@ -26,15 +31,46 @@ type Mutation {
 
   updateRGBLights(input: RGBLightInput): RGBLight
 
-  updateDeadzone(input: DeadzoneInput): Setpoint
-  updateSetpoint(input: SetpointInput): Setpoint
-  deleteSetpoint(input: SetpointInput): Setpoint
-
   updateComputerAudio(input: ComputerAudioInput): ComputerAudio
+
+  updateValve(input: ValveInput): Valve
+
+  updateRoom(input: RoomInput): Room
+  deleteSetpoint(input: DeleteSetpointInput): Room
+
+  updateTimer(input: TimerInput): Timer
 }
 
 ##########################################
 #* Inputs
+input ValveInput {
+  name: String
+  state: Boolean
+}
+
+input RoomInput {
+  name: String
+  disabled: Boolean
+  overrideTime: Int
+  demand: Boolean
+  deadzone: String
+  setpoints: setpointsIn
+}
+
+input setpointsIn {
+  day: String
+  time: String
+  temp: String
+}
+
+input DeleteSetpointInput {
+  name: String
+  day: String
+  time: String
+  temp: String
+  deadZone: String
+}
+
 input offsetsInput {
   room: String
   offset: Float
@@ -61,14 +97,6 @@ input PlugInput {
   state: Boolean
 }
 
-input SetpointInput {
-  room: String
-  day: String
-  time: String
-  temp: String
-  deadZone: String
-}
-
 input days {
   weekday: Boolean
   weekend: Boolean
@@ -79,12 +107,36 @@ input DeadzoneInput {
   deadzone: String
 }
 
+input TimerInput {
+  name: String
+  value: Float
+}
+
 ##########################################
 #* Data
+type Radiator {
+  inlet: Float
+  outlet: Float
+}
+
 type Setpoint {
   room: String
   setpoints: Setpoints
   deadzone: String
+}
+
+type Timer {
+  name: String
+  value: Float
+}
+
+type Room {
+  name: String
+  demand: Boolean
+  overrideTime: Float
+  disabled: Boolean
+  deadzone: String
+  setpoints: Setpoints
 }
 
 type Setpoints {
@@ -111,7 +163,6 @@ type Sensor {
 type Valve {
   room: String
   state: Boolean
-  demand: Boolean
   connected: Boolean
   _id: ID
 }
