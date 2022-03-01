@@ -28,7 +28,7 @@ export const getRGBLight = async (_: any, { name }) => {
 
 // Sensors
 export const getSensors = async () => {
-  const data = await sensorStore.find().toArray();
+  const data = await sensorStore.find().maxTimeMS(1000).toArray();
 
   data.sort((a, b) => (a.sort > b.sort ? 1 : -1));
 
