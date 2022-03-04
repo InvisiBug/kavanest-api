@@ -43,7 +43,6 @@ export default class Mongo {
     });
     this.client.on(`topologyClosed`, () => {
       // process.exit();
-      console.log("disconnected");
     });
     this.client.on(`timeout`, () => {
       console.log("timeout");
