@@ -15,8 +15,11 @@ const server = new ApolloServer({
   schema,
   context: logging ? log : null,
   formatError: (err) => {
-    console.log("Error encountered, restarting");
-    process.exit();
+    if (err.extensions.code === "INTERNAL_SERVER_ERROR") {
+      console.log("Server Error");
+      console.log(err);
+      process.exit();
+    }
     // console.log(err);
     // console.log(err.extensions.exception.reason.topologyVersion);
     // // Don't give the specific errors to the client.
@@ -31,5 +34,5 @@ const server = new ApolloServer({
 });
 
 server.listen().then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
+  console.log(`🚀  Server ready at ${url}`);
 });
