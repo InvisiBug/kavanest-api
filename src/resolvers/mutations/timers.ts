@@ -1,4 +1,4 @@
-import { options, timerStore } from "../../../database";
+import { options, timerStore } from "../../database";
 
 export default async (_: any, { input }: Args) => {
   const { name, value } = input;

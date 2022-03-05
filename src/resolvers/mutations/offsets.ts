@@ -1,4 +1,4 @@
-import { sensorStore, options } from "../../../database";
+import { sensorStore, options } from "../../database";
 
 const updateOffset = async (_: any, { input: { room, offset } }: Args) => {
   const data = await sensorStore.findOneAndUpdate({ room }, { $set: { offset } }, options);

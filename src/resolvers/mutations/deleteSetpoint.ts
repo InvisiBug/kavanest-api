@@ -1,4 +1,4 @@
-import { setpointsStore, options, roomStore } from "../../../database";
+import { options, roomStore } from "../../database";
 
 /*
   Grab the setpoints for the required room
