@@ -2,25 +2,24 @@
 // https://mongodb.github.io/node-mongodb-native/3.6/api/Collection.html#findOneAndUpdate
 
 import Mongo from "./mongo";
-import { mongoUrl } from "../helpers";
 
-console.log("🔗 Connecting to ", mongoUrl, "\n🔗 successful database connections made to the following");
+const mongo = new Mongo();
 
 // Devices
-export const rgbLightStore = new Mongo("devices", "rgbLights").collection;
-export const radiatorStore = new Mongo("devices", "radiators").collection;
-export const offsetStore = new Mongo("devices", "offsets").collection;
-export const sensorStore = new Mongo("devices", "sensors").collection;
-export const valveStore = new Mongo("devices", "valves").collection;
-export const plugStore = new Mongo("devices", "plugs").collection;
-export const rasiatorStore = new Mongo("devices", "radiators").collection;
+export const rgbLightStore = mongo.newCollection("devices", "rgbLights");
+export const radiatorStore = mongo.newCollection("devices", "radiators");
+export const offsetStore = mongo.newCollection("devices", "offsets");
+export const sensorStore = mongo.newCollection("devices", "sensors");
+export const valveStore = mongo.newCollection("devices", "valves");
+export const plugStore = mongo.newCollection("devices", "plugs");
+export const rasiatorStore = mongo.newCollection("devices", "radiators");
 
 // Heating Controller
-export const setpointsStore = new Mongo("heatingController", "setpoints").collection;
-export const roomStore = new Mongo("heatingController", "rooms").collection;
-export const timerStore = new Mongo("heatingController", "timers").collection;
+export const setpointsStore = mongo.newCollection("heatingController", "setpoints");
+export const roomStore = mongo.newCollection("heatingController", "rooms");
+export const timerStore = mongo.newCollection("heatingController", "timers");
 
-export const specialsStore = new Mongo("devices", "specials").collection;
+export const specialsStore = mongo.newCollection("devices", "specials");
 
 export const options: Options = { returnDocument: "after", upsert: true };
 

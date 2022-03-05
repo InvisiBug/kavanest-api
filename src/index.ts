@@ -14,8 +14,25 @@ const logging: Boolean = false;
 const server = new ApolloServer({
   schema,
   context: logging ? log : null,
+  formatError: (err) => {
+    if (err.extensions.code === "INTERNAL_SERVER_ERROR") {
+      console.log("Server Error");
+      console.log(err);
+      process.exit();
+    }
+    // console.log(err);
+    // console.log(err.extensions.exception.reason.topologyVersion);
+    // // Don't give the specific errors to the client.
+    // if (err.message.startsWith("connect ECONNREFUSED: ")) {
+    //   console.log("this error here");
+    //   return new Error("Internal server error");
+    // }
+    // // Otherwise return the original error. The error can also
+    // // be manipulated in other ways, as long as it's returned.
+    return err;
+  },
 });
 
 server.listen().then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
+  console.log(`🚀  Server ready at ${url}`);
 });
