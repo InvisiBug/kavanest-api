@@ -52,7 +52,7 @@ input RoomInput {
   name: String
   disabled: Boolean
   overrideTime: Int
-  demand: Boolean
+  demand: Int
   deadzone: String
   setpoints: setpointsIn
 }
@@ -132,7 +132,7 @@ type Timer {
 
 type Room {
   name: String
-  demand: Boolean
+  demand: Int
   overrideTime: Float
   disabled: Boolean
   deadzone: String
