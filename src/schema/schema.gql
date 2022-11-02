@@ -52,6 +52,7 @@ input RoomInput {
   name: String
   disabled: Boolean
   overrideTime: Int
+  overrideType: String
   demand: Int
   deadzone: String
   setpoints: setpointsIn

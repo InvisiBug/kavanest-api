@@ -2,7 +2,7 @@ import { options, roomStore } from "../../database";
 import { offsetTimeMins } from "../../helpers";
 
 export default async (_: any, { input }: any) => {
-  const { name, demand, overrideTime, disabled, deadzone, setpoints } = input;
+  const { name, demand, overrideTime, overrideType, disabled, deadzone, setpoints } = input;
   let day: string, time: string, temp: string;
 
   let updatedSetpoints: any;
@@ -23,6 +23,7 @@ export default async (_: any, { input }: any) => {
     ...(demand != undefined && { demand: input?.demand }),
     ...(disabled != undefined && { disabled: input?.disabled }),
     ...(overrideTime != undefined && { overrideTime: newOverrideTime }),
+    ...(overrideType != undefined && { overrideTime: overrideType }),
     ...(deadzone != undefined && { deadzone: input?.deadzone }),
     ...(updatedSetpoints != undefined && { setpoints: updatedSetpoints }),
   };
