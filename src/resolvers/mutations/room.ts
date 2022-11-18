@@ -1,8 +1,8 @@
 import { options, roomStore } from "../../database";
 import { offsetTimeMins } from "../../helpers";
 
-export default async (_: any, { input }: any) => {
-  const { name, demand, overrideTime, disabled, deadzone, setpoints } = input;
+export default async (_: any, { input }: Args) => {
+  const { name, demand, overrideTime, overrideType, disabled, deadzone, setpoints } = input;
   let day: string, time: string, temp: string;
 
   let updatedSetpoints: any;
@@ -23,6 +23,7 @@ export default async (_: any, { input }: any) => {
     ...(demand != undefined && { demand: input?.demand }),
     ...(disabled != undefined && { disabled: input?.disabled }),
     ...(overrideTime != undefined && { overrideTime: newOverrideTime }),
+    ...(overrideType != undefined && { overrideTime: overrideType }),
     ...(deadzone != undefined && { deadzone: input?.deadzone }),
     ...(updatedSetpoints != undefined && { setpoints: updatedSetpoints }),
   };
@@ -30,6 +31,22 @@ export default async (_: any, { input }: any) => {
   const data = await roomStore.findOneAndUpdate({ name }, { $set: updatedRoom }, options);
   return data.value;
 };
+
+export interface Args {
+  input: {
+    name: string;
+    demand?: boolean;
+    overrideTime?: number;
+    overrideType?: string;
+    disabled?: boolean;
+    deadzone?: number;
+    setpoints?: {
+      day: string;
+      time: string;
+      temp: string;
+    };
+  };
+}
 
 const handleSetpoints = async (name: string, day: string, time: string, temp: string) => {
   // Look for an existing entry
@@ -71,12 +88,3 @@ const handleSetpoints = async (name: string, day: string, time: string, temp: st
   // Return the new setpoints object
   return updatedSetpoints;
 };
-
-export interface Args {
-  input: {
-    name: string;
-    demand?: boolean;
-    overrideTime?: number;
-    disabled?: boolean;
-  };
-}

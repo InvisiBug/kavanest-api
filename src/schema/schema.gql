@@ -52,6 +52,7 @@ input RoomInput {
   name: String
   disabled: Boolean
   overrideTime: Int
+  overrideType: String
   demand: Int
   deadzone: String
   setpoints: setpointsIn
@@ -115,28 +116,28 @@ input TimerInput {
 ##########################################
 #* Data
 type Radiator {
-  inlet: Float
-  outlet: Float
+  inlet: Float!
+  outlet: Float!
 }
 
 type Setpoint {
-  room: String
-  setpoints: Setpoints
-  deadzone: String
+  room: String!
+  setpoints: Setpoints!
+  deadzone: String!
 }
 
 type Timer {
-  name: String
-  value: Float
+  name: String!
+  value: Float!
 }
 
 type Room {
-  name: String
-  demand: Int
-  overrideTime: Float
-  disabled: Boolean
-  deadzone: String
-  setpoints: Setpoints
+  name: String!
+  demand: Int!
+  overrideTime: Float!
+  disabled: Boolean!
+  deadzone: String!
+  setpoints: Setpoints!
 }
 
 type Setpoints {
@@ -151,45 +152,45 @@ scalar entry
 }
 
 type Sensor {
-  room: String
-  rawTemperature: Float
-  temperature: Float
-  humidity: Float
-  offset: Float
-  connected: Boolean
-  _id: ID
+  room: String!
+  rawTemperature: Float!
+  temperature: Float!
+  humidity: Float!
+  offset: Float!
+  connected: Boolean!
+  _id: ID!
 }
 
 type Valve {
-  room: String
-  state: Boolean
-  connected: Boolean
-  _id: ID
+  room: String!
+  state: Boolean!
+  connected: Boolean!
+  _id: ID!
 }
 
 type Plug {
-  name: String
-  state: Boolean
-  connected: Boolean
-  _id: ID
+  name: String!
+  state: Boolean!
+  connected: Boolean!
+  _id: ID!
 }
 
 type RGBLight {
-  name: String
-  connected: Boolean
-  red: Int
-  green: Int
-  blue: Int
-  mode: Int
-  _id: ID
+  name: String!
+  connected: Boolean!
+  red: Int!
+  green: Int!
+  blue: Int!
+  mode: Int!
+  _id: ID!
 }
 
 type ComputerAudio {
-  name: String
-  left: Boolean
-  right: Boolean
-  sub: Boolean
-  mixer: Boolean
-  connected: Boolean
-  _id: ID
+  name: String!
+  left: Boolean!
+  right: Boolean!
+  sub: Boolean!
+  mixer: Boolean!
+  connected: Boolean!
+  _id: ID!
 }
