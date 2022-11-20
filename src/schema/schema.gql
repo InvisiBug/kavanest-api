@@ -50,8 +50,8 @@ input ValveInput {
 
 input RoomInput {
   name: String
-  disabled: Boolean
-  overrideTime: Int
+  overrideTime: Float
+  overrideType: String
   demand: Int
   deadzone: String
   setpoints: setpointsIn
@@ -130,12 +130,38 @@ type Timer {
   value: Float
 }
 
+"""
+Description for the room
+"""
 type Room {
+  """
+  Description for the name
+  """
   name: String
+
+  """
+  Description for the demand
+  """
   demand: Int
+
+  """
+  Description for the override time
+  """
   overrideTime: Float
-  disabled: Boolean
+
+  """
+  The override type
+  """
+  overrideType: String
+
+  """
+  Deadzone before the heating turns back on (°C)
+  """
   deadzone: String
+
+  """
+  The setpoints for this room
+  """
   setpoints: Setpoints
 }
 

@@ -32,10 +32,10 @@ export default async (_: any, { input: { master, left, right, sub, mixer } }: Ar
     client.publish(
       topic,
       JSON.stringify({
-        Left: left,
-        Right: right,
-        Sub: sub,
-        Mixer: mixer,
+        left,
+        right,
+        sub,
+        mixer,
       })
     );
     return computerAudio.value;
