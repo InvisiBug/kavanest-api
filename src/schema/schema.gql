@@ -21,7 +21,8 @@ type Query {
   getTimers: [Timer]
   getTimer(name: String): Timer
 
-  getRadiator(room: String): Radiator
+  getRadiators: [RadiatorV2]
+  getRadiator(room: String): RadiatorV2
 }
 
 type Mutation {
@@ -117,6 +118,13 @@ input TimerInput {
 type Radiator {
   inlet: Float
   outlet: Float
+}
+
+type RadiatorV2 {
+  room: String
+  valve: Boolean
+  fan: Boolean
+  temperature: Int
 }
 
 type Setpoint {
