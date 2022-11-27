@@ -14,6 +14,7 @@ import {
   getTimers,
   getTimer,
   getRadiator,
+  getRadiators,
 } from "./queries";
 
 export const resolvers = {
@@ -39,6 +40,7 @@ export const resolvers = {
     getTimer,
 
     getRadiator,
+    getRadiators,
   },
   Mutation: {
     updatePlug,
