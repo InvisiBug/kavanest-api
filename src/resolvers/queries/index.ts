@@ -106,6 +106,15 @@ export const getTimer = async (_: any, { name }) => {
   return await timerStore.findOne({ name });
 };
 
-export const getRadiator = async (_: any, { room }) => {
-  return await radiatorStore.findOne({ room });
+////////
+//
+// Radiators
+//
+///////
+export const getRadiators = async () => {
+  const data = await radiatorStore.find().toArray();
+  return data.sort((a, b) => (a.sort > b.sort ? 1 : -1));
+};
+export const getRadiator = async (_, { name }) => {
+  return await radiatorStore.findOne({ name });
 };

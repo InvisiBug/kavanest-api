@@ -21,7 +21,8 @@ type Query {
   getTimers: [Timer]
   getTimer(name: String): Timer
 
-  getRadiator(room: String): Radiator
+  getRadiators: [RadiatorV2]
+  getRadiator(name: String): RadiatorV2
 }
 
 type Mutation {
@@ -39,6 +40,8 @@ type Mutation {
   deleteSetpoint(input: DeleteSetpointInput): Room
 
   updateTimer(input: TimerInput): Timer
+
+  updateRadiator(input: RadiatorInput): RadiatorV2
 }
 
 ##########################################
@@ -113,11 +116,26 @@ input TimerInput {
   value: Float
 }
 
+input RadiatorInput {
+  name: String
+  fan: Boolean
+  valve: Boolean
+}
+
 ##########################################
 #* Data
 type Radiator {
   inlet: Float
   outlet: Float
+}
+
+type RadiatorV2 {
+  _id: ID
+  name: String
+  valve: Boolean
+  fan: Boolean
+  temperature: Int
+  connected: Boolean
 }
 
 type Setpoint {
