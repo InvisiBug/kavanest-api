@@ -112,8 +112,9 @@ export const getTimer = async (_: any, { name }) => {
 //
 ///////
 export const getRadiators = async () => {
-  return await radiatorStore.find().toArray();
+  const data = await radiatorStore.find().toArray();
+  return data.sort((a, b) => (a.sort > b.sort ? 1 : -1));
 };
-export const getRadiator = async (_, { room }) => {
-  return await radiatorStore.findOne({ room });
+export const getRadiator = async (_, { name }) => {
+  return await radiatorStore.findOne({ name });
 };
