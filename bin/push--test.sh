@@ -1,9 +1,11 @@
 #!/bin/sh
 
 REGISTRY_IP=192.168.1.61:5000
+APP_NAME=kavanest-client:test
+
 yarn install && \
 yarn build && \
 docker build -f ./Dockerfile.kube -t kavanest-api . && \
-docker tag kavanest-api:test $REGISTRY_IP/kavanest-api:test && \
-docker push $REGISTRY_IP/kavanest-api && \
+docker tag $APP_NAME $REGISTRY_IP/$APP_NAME && \
+docker push $REGISTRY_IP/$APP_NAME && \
 rm -r dist
