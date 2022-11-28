@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "nodemon --exec \"ts-node \" ./src/index.ts",
     "build": "tsc && yarn copy:schema",
-    "push": "./bin/push.sh",
+    "push--live": "./bin/push--live.sh",
     "deploy": "yarn push && ./bin/deploy.sh",
     "deploy--live": "./bin/deploy--live.sh",
     "deploy--test": "./bin/deploy--test.sh",

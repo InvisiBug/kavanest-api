@@ -4,7 +4,7 @@ namespace: kavanest
 
 deployment:
   - name: kavanest-api
-    image: 192.168.1.61:5000/kavanest-api
+    image: 192.168.1.61:5000/kavanest-api:live
     ports:
     - port: 4000
     env:
