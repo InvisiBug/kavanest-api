@@ -133,7 +133,7 @@ type RadiatorV2 {
   name: String
   valve: Boolean
   fan: Boolean
-  temperature: Int
+  temperature: Float
   connected: Boolean
 }
 
