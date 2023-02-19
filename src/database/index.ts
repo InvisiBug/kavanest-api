@@ -10,7 +10,6 @@ export const rgbLightStore = mongo.newCollection("devices", "rgbLights");
 export const radiatorStore = mongo.newCollection("devices", "radiators");
 export const offsetStore = mongo.newCollection("devices", "offsets");
 export const sensorStore = mongo.newCollection("devices", "sensors");
-export const valveStore = mongo.newCollection("devices", "valves");
 export const plugStore = mongo.newCollection("devices", "plugs");
 export const rasiatorStore = mongo.newCollection("devices", "radiators");
 
