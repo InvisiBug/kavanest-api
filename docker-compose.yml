@@ -11,9 +11,10 @@ services:
     ports:
       - 4000:4000
     environment:
-      - MQTT=mqtt://mosquitto
-      - MONGO=mongodb://kavanest-mongo:27017
+      - MQTT=mqtt://kavanest-mqtt
+      - MONGO=mongodb://kavanest-mongo
 
 networks:
   proxynet:
     name: kavanest-devnet
+    external: true

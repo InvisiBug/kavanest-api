@@ -10,9 +10,6 @@ type Query {
   getRGBLights: [RGBLight]
   getRGBLight(name: String): RGBLight
 
-  getValves: [Valve]
-  getValve(room: String): Valve
-
   getComputerAudio: ComputerAudio
 
   getRooms: [Room]
@@ -21,8 +18,8 @@ type Query {
   getTimers: [Timer]
   getTimer(name: String): Timer
 
-  getRadiators: [RadiatorV2]
-  getRadiator(name: String): RadiatorV2
+  getRadiators: [Radiator]
+  getRadiator(name: String): Radiator
 }
 
 type Mutation {
@@ -34,22 +31,16 @@ type Mutation {
 
   updateComputerAudio(input: ComputerAudioInput): ComputerAudio
 
-  updateValve(input: ValveInput): Valve
-
   updateRoom(input: RoomInput): Room
   deleteSetpoint(input: DeleteSetpointInput): Room
 
   updateTimer(input: TimerInput): Timer
 
-  updateRadiator(input: RadiatorInput): RadiatorV2
+  updateRadiator(input: RadiatorInput): Radiator
 }
 
 ##########################################
 #* Inputs
-input ValveInput {
-  name: String
-  state: Boolean
-}
 
 input RoomInput {
   name: String
@@ -123,12 +114,8 @@ input RadiatorInput {
 
 ##########################################
 #* Data
-type Radiator {
-  inlet: Float
-  outlet: Float
-}
 
-type RadiatorV2 {
+type Radiator {
   _id: ID
   name: String
   valve: Boolean
@@ -149,36 +136,36 @@ type Timer {
 }
 
 """
-Description for the room
+The room object
 """
 type Room {
   """
-  Description for the name
+  The rooms name
   """
   name: String
 
   """
-  Description for the demand
+  The rooms current demand state [On, Off, Maybe]
   """
   demand: Int
 
   """
-  Description for the override time
+  The rooms current override time
   """
   overrideTime: Float
 
   """
-  The override type
+  The rooms override type [On, Off]
   """
   overrideType: String
 
   """
-  Deadzone before the heating turns back on (°C)
+  Deadzone rooms before the heating turns back on (°C)
   """
   deadzone: String
 
   """
-  The setpoints for this room
+  The rooms schedule setpoints
   """
   setpoints: Setpoints
 }
@@ -200,13 +187,6 @@ type Sensor {
   temperature: Float
   humidity: Float
   offset: Float
-  connected: Boolean
-  _id: ID
-}
-
-type Valve {
-  room: String
-  state: Boolean
   connected: Boolean
   _id: ID
 }

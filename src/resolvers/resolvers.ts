@@ -1,14 +1,4 @@
-import {
-  updatePlug,
-  updateRGBLights,
-  updateComputerAudio,
-  updateValve,
-  updateRoom,
-  updateTimer,
-  updateOffset,
-  deleteSetpoint,
-  updateRadiator,
-} from "./mutations";
+import { updatePlug, updateRGBLights, updateComputerAudio, updateRoom, updateTimer, updateOffset, deleteSetpoint, updateRadiator } from "./mutations";
 
 import {
   getPlugs,
@@ -17,8 +7,6 @@ import {
   getRGBLight,
   getSensors,
   getSensor,
-  getValves,
-  getValve,
   getComputerAudio,
   getRooms,
   getRoom,
@@ -38,9 +26,6 @@ export const resolvers = {
 
     getSensors,
     getSensor,
-
-    getValves,
-    getValve,
 
     getComputerAudio,
 
@@ -62,7 +47,6 @@ export const resolvers = {
 
     updateComputerAudio,
 
-    updateValve,
     updateRoom,
 
     updateTimer,
