@@ -63,7 +63,7 @@ jobs:
         uses: devmasx/merge-branch@master
         with:
           type: now
-          message: fast-forward test
+          message: deploy to test
           from_branch: test-release
           target_branch: test
           github_token: ${{ secrets.ACCESS_TOKEN }}
