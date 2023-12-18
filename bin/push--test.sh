@@ -1,6 +1,7 @@
 #!/bin/sh
 
-REGISTRY_IP=192.168.1.61:5000
+# REGISTRY_IP=192.168.1.61:5000
+REGISTRY_IP=invisibug
 APP_NAME=kavanest-api:test
 
 yarn install && \
