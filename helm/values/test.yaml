@@ -5,7 +5,7 @@ env:
   APP_VERSION: ac2f344baab8955b12ec6c5073c1181d47d11f8f
 
 deployment:
-  - name: kavanest-test-api
+  - name: kavanest-api
     image: invisibug/kavanest-api
     ports:
     - port: 4000
