@@ -54,7 +54,7 @@ const handleSetpoints = async (name: string, day: string, time: string, temp: st
 
   // does the existing room have any setpoints
   // If not, create one and return it
-  if (!currentRoom.setpoints) {
+  if (!currentRoom || !currentRoom.setpoints) {
     const newSetpoints = {
       [day]: {
         [time]: temp,

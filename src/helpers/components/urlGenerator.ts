@@ -3,5 +3,5 @@ import dotenvExpand from "dotenv-expand";
 var myEnv = dotenv.config();
 dotenvExpand(myEnv);
 
-export const mongoUrl: string = process.env.MONGO ?? "";
-export const mqttUrl: string = process.env.MQTT ?? "";
+export const mongoUrl = String(process.env.MONGO);
+export const mqttUrl = String(process.env.MQTT);

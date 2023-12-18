@@ -1,14 +1,4 @@
-import {
-  sensorStore,
-  plugStore,
-  setpointsStore,
-  valveStore,
-  rgbLightStore,
-  specialsStore,
-  roomStore,
-  timerStore,
-  radiatorStore,
-} from "../../database";
+import { sensorStore, plugStore, rgbLightStore, specialsStore, roomStore, timerStore, radiatorStore } from "../../database";
 
 ////////
 //
@@ -41,28 +31,12 @@ export const getRGBLight = async (_: any, { name }) => {
 ///////
 export const getSensors = async () => {
   const data = await sensorStore.find().maxTimeMS(1000).toArray();
-
   data.sort((a, b) => (a.sort > b.sort ? 1 : -1));
 
   return data;
 };
 export const getSensor = async (_: any, { room }) => {
   return await sensorStore.findOne({ room: room });
-};
-
-////////
-//
-// Valves
-//
-///////
-export const getValves = async () => {
-  const data = await valveStore.find().toArray();
-
-  data.sort((a, b) => (a.sort > b.sort ? 1 : -1));
-  return data;
-};
-export const getValve = async (_: any, { room }) => {
-  return await valveStore.findOne({ room });
 };
 
 ////////

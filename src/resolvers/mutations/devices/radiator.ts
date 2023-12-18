@@ -16,7 +16,8 @@ export default async (_: any, { input }: Args) => {
   const data = await radiatorStore.findOneAndUpdate({ name }, { $set: updatedRadiator }, options);
   const { value } = data;
 
-  if (name === "frontStudy" || name == "livingRoom") {
+  //* Every room in this if has one of the fancy new radiator controllers
+  if (name === "study" || name == "livingRoom") {
     // Nasty hack to make the current valves still work
     client.publish(
       `${decamelize(name)} Radiator Control`,
