@@ -44,7 +44,6 @@ type Mutation {
 
 input RoomInput {
   name: String
-  disabled: Boolean
   overrideTime: Float
   overrideType: String
   demand: Int
