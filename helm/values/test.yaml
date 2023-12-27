@@ -2,7 +2,7 @@ name: kavanest-test-api
 
 namespace: kavanest-test
 env:
-  APP_VERSION: f8502356973349a51e8153f4433b9ad8c2359d90
+  APP_VERSION: 46f528d44106c30b043b39ef23ce124b6829733e
 
 deployment:
   - name: kavanest-test-api
