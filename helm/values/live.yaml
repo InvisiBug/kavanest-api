@@ -2,11 +2,11 @@ name: kavanest-api
 
 namespace: kavanest
 env:
-  APP_VERSION: cd1c7ef77ac99857172a7fee5f3ac3d903c66f37
+  APP_VERSION: e540747f3df900ce611ae39ad1079c3226b0048e
 
 deployment:
   - name: kavanest-api
-    image: 192.168.1.61:5000/kavanest-api
+    image: invisibug/kavanest-api
     ports:
     - port: 4000
     env:
