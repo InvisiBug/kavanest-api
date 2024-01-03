@@ -5,8 +5,14 @@ import { mqttUrl, decamelize } from "../../../helpers";
 let client: mqtt.MqttClient = mqtt.connect(mqttUrl);
 
 export default async (_: any, { input: { name, state } }: Args) => {
-  toggle(state, `${decamelize(name)} Control`, "1", "0");
+  if (name !== "livingroomLamp") {
+    toggle(state, `${decamelize(name)} Control`, "1", "0");
+  } else {
+    client.publish(`zigbee2mqtt/${name}/set`, `{"state":${state ? JSON.stringify("on") : JSON.stringify("off")}}`);
+  }
+
   const plug = await plugStore.findOneAndUpdate({ name }, { $set: { state } }, options);
+
   return plug.value;
 };
 
