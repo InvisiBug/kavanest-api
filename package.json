@@ -1,8 +1,8 @@
 {
-  "name": "kavanet-mongo",
+  "name": "kavanet-api",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/InvisiBug/Kavanet-Mongo.git",
+  "repository": "https://github.com/InvisiBug/kavanest-api.git",
   "author": "InvisiBug <matthewjkavanagh@gmail.com>",
   "license": "MIT",
   "scripts": {
