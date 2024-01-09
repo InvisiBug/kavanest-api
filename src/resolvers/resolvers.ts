@@ -1,4 +1,4 @@
-import { updatePlug, updateRGBLights, updateComputerAudio, updateRoom, updateTimer, updateOffset, deleteSetpoint, updateRadiator } from "./mutations";
+import { updatePlug, updateRGBLights, updateComputerAudio, updateRoom, updateTimer, deleteSetpoint, updateRadiator } from "./mutations";
 
 import {
   getPlugs,
@@ -40,7 +40,7 @@ export const resolvers = {
   },
   Mutation: {
     updatePlug,
-    updateOffset,
+
     updateRGBLights,
 
     deleteSetpoint,
