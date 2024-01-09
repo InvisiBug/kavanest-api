@@ -183,10 +183,11 @@ scalar entry
 
 type Sensor {
   room: String
-  rawTemperature: Float
+  battery: Float
   temperature: Float
   humidity: Float
-  offset: Float
+  linkquality: Float
+  voltage: Float
   connected: Boolean
   _id: ID
 }
