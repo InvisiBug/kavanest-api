@@ -1,8 +1,10 @@
-import { radiatorStore, options } from "../../../database";
 import mqtt from "mqtt";
+import { radiatorStore, options } from "../../../database";
 import { mqttUrl, decamelize } from "../../../helpers";
 
 let client: mqtt.MqttClient = mqtt.connect(mqttUrl);
+
+const radiatorsWithFan = ["study", "livingRoom"];
 
 // This updates the mongo store then uses the response to update the device
 export default async (_: any, { input }: Args) => {
@@ -17,7 +19,7 @@ export default async (_: any, { input }: Args) => {
   const { value } = data;
 
   //* Every room in this if has one of the fancy new radiator controllers
-  if (name === "study" || name == "livingRoom") {
+  if (radiatorsWithFan.includes(name)) {
     // Nasty hack to make the current valves still work
     client.publish(
       `${decamelize(name)} Radiator Control`,

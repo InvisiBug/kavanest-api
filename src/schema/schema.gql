@@ -25,8 +25,6 @@ type Query {
 type Mutation {
   updatePlug(input: PlugInput): Plug
 
-  updateOffset(input: offsetsInput): Sensor
-
   updateRGBLights(input: RGBLightInput): RGBLight
 
   updateComputerAudio(input: ComputerAudioInput): ComputerAudio
@@ -63,11 +61,6 @@ input DeleteSetpointInput {
   time: String
   temp: String
   deadZone: String
-}
-
-input offsetsInput {
-  room: String
-  offset: Float
 }
 
 input ComputerAudioInput {
@@ -183,10 +176,11 @@ scalar entry
 
 type Sensor {
   room: String
-  rawTemperature: Float
+  battery: Float
   temperature: Float
   humidity: Float
-  offset: Float
+  linkquality: Float
+  voltage: Float
   connected: Boolean
   _id: ID
 }
