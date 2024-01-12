@@ -4,11 +4,13 @@ type Query {
   getSensors: [Sensor]
   getSensor(room: String): Sensor
 
-  getPlugs: [Plug]
   getPlug(name: String): Plug
+  getPlugs: [Plug]
+  getPlugsInRoom(name: String): [Plug]
 
-  getRGBLights: [RGBLight]
   getRGBLight(name: String): RGBLight
+  getRGBLights: [RGBLight]
+  getRGBLightsInRoom(name: String): [RGBLight]
 
   getComputerAudio: ComputerAudio
 
@@ -189,6 +191,7 @@ type Plug {
   name: String
   state: Boolean
   connected: Boolean
+  type: String
   _id: ID
 }
 
