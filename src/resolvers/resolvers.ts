@@ -3,8 +3,9 @@ import { updatePlug, updateRGBLights, updateComputerAudio, updateRoom, updateTim
 import {
   getPlugs,
   getPlug,
-  getRGBLights,
   getRGBLight,
+  getRGBLights,
+  getRGBLightsInRoom,
   getSensors,
   getSensor,
   getComputerAudio,
@@ -14,15 +15,18 @@ import {
   getTimer,
   getRadiator,
   getRadiators,
+  getPlugsInRoom,
 } from "./queries";
 
 export const resolvers = {
   Query: {
-    getPlugs,
     getPlug,
+    getPlugs,
+    getPlugsInRoom,
 
-    getRGBLights,
     getRGBLight,
+    getRGBLights,
+    getRGBLightsInRoom,
 
     getSensors,
     getSensor,

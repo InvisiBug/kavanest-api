@@ -5,11 +5,15 @@ import { sensorStore, plugStore, rgbLightStore, specialsStore, roomStore, timerS
 // Plugs
 //
 ///////
+
+export const getPlug = async (_: any, { name }) => {
+  return await plugStore.findOne({ name });
+};
 export const getPlugs = async () => {
   return await plugStore.find().toArray();
 };
-export const getPlug = async (_: any, { name }) => {
-  return await plugStore.findOne({ name });
+export const getPlugsInRoom = async (_: any, { name }) => {
+  return await plugStore.find({ room: name }).toArray();
 };
 
 ////////
@@ -17,11 +21,14 @@ export const getPlug = async (_: any, { name }) => {
 // RGB Lights
 //
 ///////
+export const getRGBLight = async (_: any, { name }) => {
+  return await rgbLightStore.findOne({ name });
+};
 export const getRGBLights = async () => {
   return await rgbLightStore.find().toArray();
 };
-export const getRGBLight = async (_: any, { name }) => {
-  return await rgbLightStore.findOne({ name });
+export const getRGBLightsInRoom = async (_: any, { name }) => {
+  return await rgbLightStore.find({ room: name }).toArray();
 };
 
 ////////
