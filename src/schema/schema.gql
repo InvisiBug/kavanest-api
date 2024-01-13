@@ -79,6 +79,8 @@ input RGBLightInput {
   green: Int
   blue: Int
   mode: Int
+  state: Boolean
+  brightness: Int
 }
 
 input PlugInput {
@@ -203,6 +205,9 @@ type RGBLight {
   blue: Int
   mode: Int
   _id: ID
+  state: String
+  brightness: Int
+  linkquality: String
 }
 
 type ComputerAudio {
