@@ -4,7 +4,7 @@ import { mqttUrl, decamelize } from "../../../helpers";
 
 let client: mqtt.MqttClient = mqtt.connect(mqttUrl);
 
-const zigbeePlugs = ["livingRoomLamp", "eggChair"];
+const zigbeePlugs = ["livingRoomLamp", "eggChair", "trainingRoomLamp"];
 
 export default async (_: any, { input: { name, state } }: Args) => {
   if (zigbeePlugs.includes(name)) {
