@@ -1,11 +1,10 @@
-import { sensorStore, plugStore, rgbLightStore, specialsStore, roomStore, timerStore, radiatorStore } from "../../database";
+import { sensorStore, plugStore, rgbLightStore, specialsStore, roomStore, timerStore, radiatorStore, bulbStore } from "../../database";
 
 ////////
 //
 // Plugs
 //
 ///////
-
 export const getPlug = async (_: any, { name }) => {
   return await plugStore.findOne({ name });
 };
@@ -14,6 +13,21 @@ export const getPlugs = async () => {
 };
 export const getPlugsInRoom = async (_: any, { name }) => {
   return await plugStore.find({ room: name }).toArray();
+};
+
+////////
+//
+// bulbs
+//
+///////
+export const getBulb = async (_: any, { name }) => {
+  return await bulbStore.findOne({ name });
+};
+export const getBulbs = async () => {
+  return await bulbStore.find().toArray();
+};
+export const getBulbsInRoom = async (_: any, { name }) => {
+  return await bulbStore.find({ room: name }).toArray();
 };
 
 ////////

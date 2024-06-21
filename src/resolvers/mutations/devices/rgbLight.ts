@@ -79,6 +79,7 @@ const updateZigbeeRGB = (topic: string, r: number, g: number, b: number) => {
   client.publish(topic, JSON.stringify({ color: { rgb: `${r},${g},${b}` } }));
 };
 
+// TODO: I think these can be undefined or number, Check this
 export interface Args {
   input: {
     name: string;

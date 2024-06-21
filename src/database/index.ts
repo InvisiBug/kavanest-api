@@ -12,6 +12,7 @@ export const offsetStore = mongo.newCollection("devices", "offsets");
 export const sensorStore = mongo.newCollection("devices", "sensors");
 export const plugStore = mongo.newCollection("devices", "plugs");
 export const rasiatorStore = mongo.newCollection("devices", "radiators");
+export const bulbStore = mongo.newCollection("devices", "bulbs");
 
 // Heating Controller
 export const setpointsStore = mongo.newCollection("heatingController", "setpoints");
