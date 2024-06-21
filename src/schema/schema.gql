@@ -8,6 +8,10 @@ type Query {
   getPlugs: [Plug]
   getPlugsInRoom(name: String): [Plug]
 
+  getBulb(name: String): Bulb
+  getBulbs: [Bulb]
+  getBulbsInRoom(name: String): [Bulb]
+
   getRGBLight(name: String): RGBLight
   getRGBLights: [RGBLight]
   getRGBLightsInRoom(name: String): [RGBLight]
@@ -26,6 +30,8 @@ type Query {
 
 type Mutation {
   updatePlug(input: PlugInput): Plug
+
+  updateBulb(input: BulbInput): Bulb
 
   updateRGBLights(input: RGBLightInput): RGBLight
 
@@ -86,6 +92,12 @@ input RGBLightInput {
 input PlugInput {
   name: String
   state: Boolean
+}
+
+input BulbInput {
+  name: String
+  state: Boolean
+  brightness: Int
 }
 
 input days {
@@ -194,7 +206,21 @@ type Plug {
   state: Boolean
   connected: Boolean
   type: String
+  room: String
   _id: ID
+}
+
+type Bulb {
+  _id: ID
+  name: String
+  brightness: Int
+  connected: Boolean
+  linkquality: Int
+  room: String
+  state: Boolean
+  colour_mode: String
+  colour_temp: Int
+  type: String
 }
 
 type RGBLight {

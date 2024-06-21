@@ -10,5 +10,8 @@ export const decamelize = (text: string) => {
 
 export const offsetTimeMins = (addedTime = 0) => {
   let now = new Date();
-  return now.setMinutes(now.getMinutes() + addedTime);
+  // return now.setMinutes(now.getMinutes() + addedTime);
+
+  let newTime = now.getTime() + addedTime * 60000;
+  return newTime;
 };
