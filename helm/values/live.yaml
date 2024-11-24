@@ -2,7 +2,7 @@ name: kavanest-api
 
 namespace: kavanest
 env:
-  APP_VERSION: d59a83fff730ba92aeb68d62e038b6b402994aad
+  APP_VERSION: 68a2f1999210fa96d074bc46c8cf4b89cfff8d50
 
 deployment:
   - name: kavanest-api
