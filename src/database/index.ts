@@ -21,6 +21,9 @@ export const timerStore = mongo.newCollection("heatingController", "timers");
 
 export const specialsStore = mongo.newCollection("devices", "specials");
 
+// Motion Controllers
+export const motionStore = mongo.newCollection("controllers", "motion");
+
 export const options: Options = { returnDocument: "after", upsert: true };
 
 export interface Options {

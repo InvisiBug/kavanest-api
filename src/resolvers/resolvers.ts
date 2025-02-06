@@ -1,4 +1,14 @@
-import { updatePlug, updateRGBLights, updateBulb, updateComputerAudio, updateRoom, updateTimer, deleteSetpoint, updateRadiator } from "./mutations";
+import {
+  updatePlug,
+  updateRGBLights,
+  updateBulb,
+  updateComputerAudio,
+  updateRoom,
+  updateTimer,
+  deleteSetpoint,
+  updateRadiator,
+  updateMotionController,
+} from "./mutations";
 
 import {
   getPlugs,
@@ -19,6 +29,8 @@ import {
   getTimer,
   getRadiator,
   getRadiators,
+  getMotionController,
+  getMotionControllers,
 } from "./queries";
 
 export const resolvers = {
@@ -35,19 +47,22 @@ export const resolvers = {
     getRGBLights,
     getRGBLightsInRoom,
 
-    getSensors,
     getSensor,
+    getSensors,
 
     getComputerAudio,
 
-    getRooms,
     getRoom,
+    getRooms,
 
-    getTimers,
     getTimer,
+    getTimers,
 
     getRadiator,
     getRadiators,
+
+    getMotionController,
+    getMotionControllers,
   },
   Mutation: {
     updatePlug,
@@ -65,6 +80,8 @@ export const resolvers = {
     updateTimer,
 
     updateRadiator,
+
+    updateMotionController,
   },
 };
 

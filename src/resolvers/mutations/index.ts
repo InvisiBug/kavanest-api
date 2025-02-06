@@ -9,3 +9,4 @@ export { default as updateTimer } from "./timers";
 export { deleteSetpoint } from "./deleteSetpoint";
 export { default as deadzone } from "./deadzones";
 export { default as room } from "./room";
+export { default as updateMotionController } from "./motionControllers";
