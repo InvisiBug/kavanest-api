@@ -1,8 +1,8 @@
 ##########################################
 #* Queries & Mutations
 type Query {
-  getSensors: [Sensor]
   getSensor(room: String): Sensor
+  getSensors: [Sensor]
 
   getPlug(name: String): Plug
   getPlugs: [Plug]
@@ -18,14 +18,17 @@ type Query {
 
   getComputerAudio: ComputerAudio
 
-  getRooms: [Room]
   getRoom(name: String): Room
+  getRooms: [Room]
 
-  getTimers: [Timer]
   getTimer(name: String): Timer
+  getTimers: [Timer]
 
-  getRadiators: [Radiator]
   getRadiator(name: String): Radiator
+  getRadiators: [Radiator]
+
+  getMotionController(name: String): MotionController
+  getMotionControllers: [MotionController]
 }
 
 type Mutation {
@@ -43,6 +46,8 @@ type Mutation {
   updateTimer(input: TimerInput): Timer
 
   updateRadiator(input: RadiatorInput): Radiator
+
+  updateMotionController(input: MotionControllerInput): MotionController
 }
 
 ##########################################
@@ -121,6 +126,12 @@ input RadiatorInput {
   valve: Boolean
 }
 
+input MotionControllerInput {
+  name: String
+  motionTriggered: Boolean
+  armed: Boolean
+  allLights: Boolean
+}
 ##########################################
 #* Data
 
@@ -142,6 +153,13 @@ type Setpoint {
 type Timer {
   name: String
   value: Float
+}
+
+type MotionController {
+  name: String
+  motionTriggered: Boolean
+  armed: Boolean
+  allLights: Boolean
 }
 
 """
