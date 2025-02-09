@@ -8,7 +8,20 @@
     "resolveJsonModule": true,
     "strict": false,
     "declaration": true,
-    "outDir": "dist"
-  },"include": [
-    "src/*"]
+    "outDir": "dist",
+    "paths": {
+      "src*": ["./src/*"],
+      "@/*": ["./src/*"]
+    },
+  "plugins": [
+      {
+        "transform": "@zerollup/ts-transform-paths"
+      }
+    ]
+  },
+  "ts-node": {
+    // Do not forget to `yarn add tsconfig-paths`
+    "require": ["tsconfig-paths/register"]
+  },
+  "include": ["src",]
 }
