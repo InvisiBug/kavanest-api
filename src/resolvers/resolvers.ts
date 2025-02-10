@@ -31,6 +31,8 @@ import {
   getRadiators,
   getMotionController,
   getMotionControllers,
+  getMotionSensor,
+  getMotionSensors,
 } from "./queries";
 
 export const resolvers = {
@@ -63,6 +65,9 @@ export const resolvers = {
 
     getMotionController,
     getMotionControllers,
+
+    getMotionSensor,
+    getMotionSensors,
   },
   Mutation: {
     updatePlug,
