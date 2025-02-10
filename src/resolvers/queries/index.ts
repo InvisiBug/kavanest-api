@@ -1,4 +1,15 @@
-import { sensorStore, plugStore, rgbLightStore, specialsStore, roomStore, timerStore, radiatorStore, bulbStore, motionStore } from "../../database";
+import {
+  sensorStore,
+  plugStore,
+  rgbLightStore,
+  specialsStore,
+  roomStore,
+  timerStore,
+  radiatorStore,
+  bulbStore,
+  motionStore,
+  motionSensorStore,
+} from "../../database";
 
 ////////
 //
@@ -132,4 +143,17 @@ export const getRadiator = async (_, { name }) => {
 export const getRadiators = async () => {
   const data = await radiatorStore.find().toArray();
   return data.sort((a, b) => (a.sort > b.sort ? 1 : -1));
+};
+
+////////
+//
+// Motion Sensors
+//
+///////
+export const getMotionSensor = async (_, { name }) => {
+  return await motionSensorStore.findOne({ name });
+};
+
+export const getMotionSensors = async () => {
+  return await motionSensorStore.find().toArray();
 };

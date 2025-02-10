@@ -1,3 +1,4 @@
+# How to split a schema into multiple files => https://stackoverflow.com/questions/57040429/how-to-split-a-long-graphql-schema
 ##########################################
 #* Queries & Mutations
 type Query {
@@ -21,11 +22,15 @@ type Query {
   getRoom(name: String): Room
   getRooms: [Room]
 
-  getTimer(name: String): Timer
-  getTimers: [Timer]
-
   getRadiator(name: String): Radiator
   getRadiators: [Radiator]
+
+  getMotionSensor(name: String): MotionSensor
+  getMotionSensors: [MotionSensor]
+
+  # Control points for the house
+  getTimer(name: String): Timer
+  getTimers: [Timer]
 
   getMotionController(name: String): MotionController
   getMotionControllers: [MotionController]
@@ -261,5 +266,17 @@ type ComputerAudio {
   sub: Boolean
   mixer: Boolean
   connected: Boolean
+  _id: ID
+}
+
+type MotionSensor {
+  name: String
+  room: String
+  connected: Boolean
+  battery: Int
+  battery_low: Boolean
+  linkquality: Int
+  occupancy: Boolean
+  voltage: Int
   _id: ID
 }
