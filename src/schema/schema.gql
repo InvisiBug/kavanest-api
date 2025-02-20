@@ -62,7 +62,7 @@ input RoomInput {
   name: String
   overrideTime: Float
   overrideType: String
-  demand: Int
+  demand: String
   deadzone: String
   setpoints: setpointsIn
 }
@@ -70,7 +70,12 @@ input RoomInput {
 input setpointsIn {
   day: String
   time: String
-  temp: String
+  values: tempInput
+}
+
+input tempInput {
+  temp: Float
+  type: String
 }
 
 input DeleteSetpointInput {
@@ -149,12 +154,6 @@ type Radiator {
   connected: Boolean
 }
 
-type Setpoint {
-  room: String
-  setpoints: Setpoints
-  deadzone: String
-}
-
 type Timer {
   name: String
   value: Float
@@ -177,9 +176,9 @@ type Room {
   name: String
 
   """
-  The rooms current demand state [On, Off, Maybe]
+  The rooms current demand state [on, off, passive]
   """
-  demand: Int
+  demand: String
 
   """
   The rooms current override time
@@ -210,7 +209,13 @@ type Setpoints {
 scalar entry
 {
   time: String
+  temp: values
+}
+
+scalar values
+{
   temp: Float
+  overrideType: String
 }
 
 type Sensor {
