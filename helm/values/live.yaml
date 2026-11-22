@@ -2,7 +2,7 @@ name: kavanest-api
 
 namespace: kavanest
 env:
-  APP_VERSION: ff818d95bb92a218b053b9c8dcc1bab6d470e0f9
+  APP_VERSION: fabd01d0c6abc702f73ec91f3c3f808402b517e3
 
 deployment:
   - name: kavanest-api
@@ -19,16 +19,31 @@ deployment:
     # - name: NODE_ENV
     #   value: production
 
-ingress:
-  - name: api.kavanet.io
-    selector: kavanest-api
-    path: /
-    port: 4000
-    host: api.kavanet.io
+httpRoute:
+  name: api.kavanet.io
+  gatewayName: kavanetes-gateway
+  gatewayNamespace: nginx-gateway
+  host: api.kavanet.io
+  path: /
+  serviceName: kavanest-api
+  servicePort: 80
 
 service:
-  loadBalancer:
-    - name: kavanest-api
-      selector: kavanest-api
-      port: 80
-      containerPort: 4000
+  name: kavanest-api
+  selector: kavanest-api
+  port: 80
+  targetPort: 3100
+
+# ingress:
+#   - name: api.kavanet.io
+#     selector: kavanest-api
+#     path: /
+#     port: 4000
+#     host: api.kavanet.io
+
+# service:
+#   loadBalancer:
+#     - name: kavanest-api
+#       selector: kavanest-api
+#       port: 80
+#       containerPort: 4000
