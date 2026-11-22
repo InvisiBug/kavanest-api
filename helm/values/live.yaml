@@ -19,16 +19,31 @@ deployment:
     # - name: NODE_ENV
     #   value: production
 
-ingress:
-  - name: api.kavanet.io
-    selector: kavanest-api
-    path: /
-    port: 4000
-    host: api.kavanet.io
+httpRoute:
+  name: api.kavanet.io
+  gatewayName: kavanetes-gateway
+  gatewayNamespace: nginx-gateway
+  host: api.kavanet.io
+  path: /
+  serviceName: kavanest-api
+  servicePort: 80
 
 service:
-  loadBalancer:
-    - name: kavanest-api
-      selector: kavanest-api
-      port: 80
-      containerPort: 4000
+  name: kavanest-api
+  selector: kavanest-api
+  port: 80
+  targetPort: 3100
+
+# ingress:
+#   - name: api.kavanet.io
+#     selector: kavanest-api
+#     path: /
+#     port: 4000
+#     host: api.kavanet.io
+
+# service:
+#   loadBalancer:
+#     - name: kavanest-api
+#       selector: kavanest-api
+#       port: 80
+#       containerPort: 4000
