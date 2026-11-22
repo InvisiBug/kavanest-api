@@ -2,7 +2,7 @@ name: kavanest-api
 
 namespace: kavanest
 env:
-  APP_VERSION: fabd01d0c6abc702f73ec91f3c3f808402b517e3
+  APP_VERSION: e31743491d2f8c7bc2d72bd1050891423a79ceae
 
 deployment:
   - name: kavanest-api
@@ -32,7 +32,7 @@ service:
   name: kavanest-api
   selector: kavanest-api
   port: 80
-  targetPort: 3100
+  targetPort: 4000
 
 # ingress:
 #   - name: api.kavanet.io

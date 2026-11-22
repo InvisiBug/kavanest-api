@@ -22,7 +22,6 @@ COPY tsconfig.json ./
 # ENV NODE_ENV production
 RUN yarn install
 
-EXPOSE 1883
-EXPOSE 9001
+EXPOSE 4000
 
 CMD ["node","index.js"]
