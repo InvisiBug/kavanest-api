@@ -32,7 +32,7 @@ service:
   name: kavanest-api
   selector: kavanest-api
   port: 80
-  targetPort: 3100
+  targetPort: 4000
 
 # ingress:
 #   - name: api.kavanet.io
